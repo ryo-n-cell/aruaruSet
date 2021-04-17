@@ -1,0 +1,18 @@
+IJLSAY5RSX
+RY1VTVLFIH
+ADXDBRXPKH
+9EVSR7ORMX
+DU5DK5KLAV
+OIN31NTYLH
+T4LKWH3YPL
+1MJH7AC3DD
+2BINYE94XX
+LCKAGJ01SF
+
+aruaruWebAPI Heroku
+heroku
+https://protected-hamlet-09315.herokuapp.com/ | https://git.heroku.com/protected-hamlet-09315.git
+
+https://protected-hamlet-09315.herokuapp.com/admin/
+
+front Heroku
