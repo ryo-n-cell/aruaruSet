@@ -1,7 +1,7 @@
 <template>
   <vue-swing @throwout="onThrowout">
-    <div v-for="card in question" :id="card.id" :key="card.id" class="card">
-      <span>{{ card.content }}</span>
+    <div v-for="card in ip" :id="card.id" :key="card.id" class="card">
+      <span>{{ card.question }}</span>
     </div>
   </vue-swing>
 </template>
@@ -12,6 +12,14 @@ import { mapMutations } from 'vuex'
 
 export default {
   components: { VueSwing },
+
+  async asyncData({ $axios }) {
+    const ip = await $axios.$get(
+      'https://protected-hamlet-09315.herokuapp.com/question-tables'
+    )
+    console.log(ip)
+    return { ip }
+  },
 
   data() {
     return {
@@ -26,28 +34,6 @@ export default {
       },
       result: [],
       // WebAPIから10問ほど引っ張ってくる
-      question: [
-        {
-          id: 1,
-          content: '青い銀行と言われれば、どこの銀行か分かる',
-        },
-        {
-          id: 2,
-          content: 'データの規則性が乱れるのは許せない',
-        },
-        {
-          id: 3,
-          content: '手作業で30分掛かるものを3秒で終わらせるために3時間掛ける',
-        },
-        {
-          id: 4,
-          content: "ほぼ100%の'ほぼ'にピクッとなる",
-        },
-        {
-          id: 5,
-          content: '機械全般に強いと思われる',
-        },
-      ],
     }
   },
 
@@ -57,14 +43,13 @@ export default {
     },
   },
 
-  // mounted: {
-  //   methods: {
-  //     async fetchSomething() {
-  //       const ip = await this.$axios.$get(
-  //         'https://protected-hamlet-09315.herokuapp.com/question-tables'
-  //       )
-  //       this.ip = ip
-  //     },
+  // created: {
+  //   async fetchSomething() {
+  //     const ip = await this.$axios.$get(
+  //       'https://protected-hamlet-09315.herokuapp.com/question-tables'
+  //     )
+  //     this.ip = ip
+  //     console.log(ip)
   //   },
   // },
 
@@ -73,7 +58,7 @@ export default {
     // target=Nodeオブジェクト（https://developer.mozilla.org/ja/docs/Web/API/Node）
     onThrowout({ target, throwDirection }) {
       setTimeout(() => {
-        this.question.pop()
+        this.ip.pop()
       }, 100)
       this.resultEvent(target.id, target.textContent, throwDirection)
     },
@@ -110,7 +95,7 @@ export default {
 
     // カードが０になったら結果画面にルーティングする
     endEvent() {
-      if (this.question.length === 1) {
+      if (this.ip.length === 1) {
         console.log('なくなりました')
         // this.$router.push('/resultView')
         this.$router.push({ path: '/resultView', query: this.result })
