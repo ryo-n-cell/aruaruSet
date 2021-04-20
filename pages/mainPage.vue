@@ -1,6 +1,31 @@
 <template>
   <vue-swing @throwout="onThrowout">
-    <div v-for="card in ip" :id="card.id" :key="card.id" class="card">
+    <div
+      v-for="card in ip"
+      :id="card.id"
+      :key="card.id"
+      class="card"
+      @mousedown="swipeEventstart($event)"
+      @mousemove="swipeEventmove($event)"
+      @mouseup="swipeEventup()"
+      @touchstart="swipeEventstart($event)"
+      @toucmove="swipeEventmove($event)"
+      @touchend="swipeEventup()"
+    >
+      <div class="selectPosition">
+        <img
+          v-if="nopeShow"
+          class="nope"
+          src="@/assets/img/nope-txt.png"
+          alt="nope"
+        />
+        <img
+          v-if="yepShow"
+          class="yep"
+          src="@/assets/img/yep-txt.png"
+          alt="yep"
+        />
+      </div>
       <span>{{ card.question }}</span>
     </div>
   </vue-swing>
@@ -12,7 +37,7 @@ import { mapMutations } from 'vuex'
 
 export default {
   components: { VueSwing },
-
+  // WebAPIから10問ほど引っ張ってくる
   async asyncData({ $axios }) {
     const ip = await $axios.$get(
       'https://protected-hamlet-09315.herokuapp.com/question-tables'
@@ -33,7 +58,13 @@ export default {
         maxThrowOutDistance: 300,
       },
       result: [],
-      // WebAPIから10問ほど引っ張ってくる
+      // カード要素の左側x軸を基準とする
+      moveEvent: false,
+      criteriaCoordinatesX: 0,
+      swipeDistance: 0,
+      // ディグレクティブアニメーションは後で書く
+      nopeShow: false,
+      yepShow: false,
     }
   },
 
@@ -43,20 +74,39 @@ export default {
     },
   },
 
-  // created: {
-  //   async fetchSomething() {
-  //     const ip = await this.$axios.$get(
-  //       'https://protected-hamlet-09315.herokuapp.com/question-tables'
-  //     )
-  //     this.ip = ip
-  //     console.log(ip)
-  //   },
-  // },
-
   methods: {
+    // 座標イベント
+    swipeEventstart(e) {
+      this.criteriaCoordinatesX = e.clientX
+      this.moveEvent = true
+    },
+    swipeEventmove(e) {
+      this.swipeDistance = this.criteriaCoordinatesX - e.clientX
+      if (this.moveEvent === true) {
+        console.log(this.swipeDistance)
+        if (this.swipeDistance > 0) {
+          this.nopeShow = true
+          this.yepShow = false
+        } else if (this.swipeDistance < 0) {
+          this.nopeShow = false
+          this.yepShow = true
+        }
+      }
+    },
+    swipeEventup() {
+      this.moveEvent = false
+      console.log('swipeEventup')
+      this.criteriaCoordinatesX = 0
+      this.nopeShow = false
+      this.yepShow = false
+    },
     // カードを消すアクションと結果処理メソッドに引数を渡す
     // target=Nodeオブジェクト（https://developer.mozilla.org/ja/docs/Web/API/Node）
     onThrowout({ target, throwDirection }) {
+      this.moveEvent = false
+      this.nopeShow = false
+      this.yepShow = false
+      this.criteriaCoordinatesX = 0
       setTimeout(() => {
         this.ip.pop()
       }, 100)
@@ -119,6 +169,31 @@ export default {
   justify-content: center;
   left: calc(50% - 15vw);
   position: absolute;
-  /* top: calc(50% - 100px); */
+}
+.selectPosition {
+  position: absolute;
+  pointer-events: none;
+}
+.nope .yep {
+  position: absolute;
+  pointer-events: none;
+}
+
+.nope-enter-active {
+  animation: swipe-in 1s;
+}
+.nope-leave-active {
+  animation: swipe-in 1s reverse;
+}
+@keyframes swipe-in {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 </style>
