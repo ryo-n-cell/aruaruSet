@@ -1,6 +1,6 @@
 {
   "name": "aruaruSwip",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "scripts": {
     "dev": "cross-env NUXT_HOST=0.0.0.0 NUXT_PORT=3333 nuxt",
