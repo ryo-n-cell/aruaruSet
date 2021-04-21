@@ -1,12 +1,13 @@
 import colors from 'vuetify/es5/util/colors'
 
 export default {
+  target: 'static',
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     titleTemplate: '%s - aruaruSwip',
     title: 'aruaruSwip',
     htmlAttrs: {
-      lang: 'en',
+      lang: 'ja',
     },
     meta: [
       { charset: 'utf-8' },
