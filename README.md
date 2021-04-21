@@ -23,7 +23,7 @@ For detailed explanation on how things work, check out [Nuxt.js docs](https://nu
 
 ・タスク
 　・フロント側
-　　・スワイプ時のフェードイン、フェードアウト
+　　・スワイプ時のフェードイン、フェードアウト（※プロトタイプまでOK）
 　　・Spuerを消して選択をBooleanにする
 　　・導入ページから完了ページまでの画面作成
 　　・layoutの部分をheader以外消す（本番時）
@@ -41,7 +41,7 @@ For detailed explanation on how things work, check out [Nuxt.js docs](https://nu
 ```plans
 ~4/21
 ・スワイプ時のフェードイン、フェードアウト
-・スマホで見るためにフロント側をデプロイする。
+・スマホで見るためにフロント側をビルドしてデプロイする。
 
 4/22~4/24
 ・Spuerを消して選択をBooleanにする

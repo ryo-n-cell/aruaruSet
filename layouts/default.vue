@@ -67,7 +67,7 @@ export default {
   data() {
     return {
       clipped: false,
-      drawer: true,
+      drawer: false,
       fixed: false,
       items: [
         {
@@ -76,25 +76,20 @@ export default {
           to: '/',
         },
         {
-          icon: 'mdi-chart-bubble',
-          title: 'Vuex操作確認',
-          to: '/todos',
-        },
-        {
-          icon: '',
+          icon: 'mdi-apps',
           title: 'メインページ',
           to: '/mainPage',
         },
         {
-          icon: '',
+          icon: 'mdi-apps',
           title: '結果画面',
           to: '/resultView',
         },
       ],
       miniVariant: false,
-      right: true,
+      right: false,
       rightDrawer: false,
-      title: 'Vuetify.js',
+      title: 'ITエンジニアあるあるアプリ',
     }
   },
 }

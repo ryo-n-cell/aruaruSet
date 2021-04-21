@@ -11,7 +11,14 @@
         <v-col cols="6">{{ item.result }}</v-col>
       </v-row>
       <v-row class="text-center">
-        <v-col cols="12"> </v-col>
+        <v-col cols="12">
+          <v-card>
+            <v-card-actions>
+              <v-spacer />
+              <v-btn color="primary" @click="moveTop()"> topに戻る </v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-col>
       </v-row>
     </v-col>
   </v-row>
@@ -31,7 +38,11 @@ export default {
       return this.$store.state.choicesResult.result
     },
   },
-  method: {
+  methods: {
+    moveTop() {
+      this.$store.commit('choicesResult/removeResult')
+      this.$router.push({ path: '/' })
+    },
     ...mapMutations({
       toggle: 'choicesResult/toggle',
     }),

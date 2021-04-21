@@ -10,6 +10,9 @@ export const mutations = {
   toggle(state, todo) {
     todo.done = !todo.done
   },
+  removeResult(state) {
+    state.result.splice(0)
+  },
 }
 
 export const getters = {

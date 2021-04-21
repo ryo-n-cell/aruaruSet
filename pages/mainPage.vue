@@ -5,12 +5,9 @@
       :id="card.id"
       :key="card.id"
       class="card"
-      @mousedown="swipeEventstart($event)"
-      @mousemove="swipeEventmove($event)"
-      @mouseup="swipeEventup()"
-      @touchstart="swipeEventstart($event)"
-      @toucmove="swipeEventmove($event)"
-      @touchend="swipeEventup()"
+      @pointerdown="swipeEventstart($event)"
+      @pointermove="swipeEventmove($event)"
+      @pointerup="swipeEventup()"
     >
       <div class="selectPosition">
         <img
@@ -49,11 +46,8 @@ export default {
   data() {
     return {
       config: {
-        allowedDirections: [
-          VueSwing.Direction.UP,
-          VueSwing.Direction.LEFT,
-          VueSwing.Direction.RIGHT,
-        ],
+        allowedDirections: [VueSwing.Direction.LEFT, VueSwing.Direction.RIGHT],
+        throwOutConfidence: 2,
         minThrowOutDistance: 250,
         maxThrowOutDistance: 300,
       },
@@ -120,8 +114,6 @@ export default {
       const resultObj = { id: '', content: '', result: '' }
       if (resultDirection === 'Symbol(LEFT)') {
         resultObj.result = 'nope'
-      } else if (resultDirection === 'Symbol(UP)') {
-        resultObj.result = 'super'
       } else if (resultDirection === 'Symbol(RIGHT)') {
         resultObj.result = 'yup'
       } else {
@@ -146,9 +138,7 @@ export default {
     // カードが０になったら結果画面にルーティングする
     endEvent() {
       if (this.ip.length === 1) {
-        console.log('なくなりました')
-        // this.$router.push('/resultView')
-        this.$router.push({ path: '/resultView', query: this.result })
+        this.$router.push({ path: '/resultView' })
       }
     },
   },
@@ -194,6 +184,17 @@ export default {
   }
   100% {
     opacity: 1;
+  }
+}
+@media screen and (max-width: 599px) {
+  /* 320pxまでの幅の場合に適応される */
+  .card {
+    margin-top: 1vh;
+    font-size: 25px;
+    height: 60vh;
+    width: 50vw;
+    justify-content: center;
+    left: calc(50% - 25vw);
   }
 }
 </style>
