@@ -29,6 +29,9 @@ For detailed explanation on how things work, check out [Nuxt.js docs](https://nu
 　　・layoutの部分をheader以外消す（本番時）
 　　
 　・DB・API関連
+    ・DBを作成（mySQL)
+    ・node.js+explessでDB連携とAPI作成（ここまでローカル）
+    ・AWSへDB+node.jsを入れる（アレクサスキルのクーポン使用）
 　　・問題がランダマイズされたWebAPI作成
 　　・予定DBテーブル完成
 　　・リレーショナル作成
