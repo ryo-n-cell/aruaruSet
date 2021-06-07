@@ -1,7 +1,7 @@
 <template>
   <vue-swing @throwout="onThrowout">
     <div
-      v-for="card in ip"
+      v-for="card in ip.key"
       :id="card.id"
       :key="card.id"
       class="card"
@@ -36,13 +36,14 @@ export default {
   components: { VueSwing },
   // WebAPIから10問ほど引っ張ってくる
   async asyncData({ $axios }) {
-    const ip = await $axios.$get('https://aruaruswipeapp.herokuapp.com/').key
+    const ip = await $axios.$get('https://aruaruswipeapp.herokuapp.com/')
     console.log(ip)
     return { ip }
   },
 
   data() {
     return {
+      data: {},
       config: {
         allowedDirections: [VueSwing.Direction.LEFT, VueSwing.Direction.RIGHT],
         throwOutConfidence: 2,
@@ -100,7 +101,7 @@ export default {
       this.yepShow = false
       this.criteriaCoordinatesX = 0
       setTimeout(() => {
-        this.ip.pop()
+        this.ip.key.pop()
       }, 100)
       this.resultEvent(target.id, target.textContent, throwDirection)
     },
@@ -135,7 +136,7 @@ export default {
 
     // カードが０になったら結果画面にルーティングする
     endEvent() {
-      if (this.ip.length === 1) {
+      if (this.ip.key.length === 1) {
         this.$router.push({ path: '/resultView' })
       }
     },
