@@ -37,7 +37,6 @@ export default {
   // WebAPIから10問ほど引っ張ってくる
   async asyncData({ $axios }) {
     const ip = await $axios.$get('https://aruaruswipeapp.herokuapp.com/').key
-      .question
     console.log(ip)
     return { ip }
   },
