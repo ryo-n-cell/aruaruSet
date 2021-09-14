@@ -57,9 +57,6 @@
           </p>
           <p>・DBと繋げて、各種APIを作成</p>
           <p>etc....</p>
-
-          <hr class="my-3" />
-          <h1>※こちらは、オープンソースにする予定がありません。</h1>
           <hr class="my-3" />
         </v-card-text>
         <v-card-actions>
