@@ -37,7 +37,6 @@ export default {
   // WebAPIから10問ほど引っ張ってくる
   async asyncData({ $axios }) {
     const ip = await $axios.$get('https://aruaruswipeapp.herokuapp.com/')
-    console.log(ip)
     return { ip }
   },
 
@@ -76,7 +75,6 @@ export default {
     swipeEventmove(e) {
       this.swipeDistance = this.criteriaCoordinatesX - e.clientX
       if (this.moveEvent === true) {
-        console.log(this.swipeDistance)
         if (this.swipeDistance > 0) {
           this.nopeShow = true
           this.yepShow = false
@@ -88,7 +86,6 @@ export default {
     },
     swipeEventup() {
       this.moveEvent = false
-      console.log('swipeEventup')
       this.criteriaCoordinatesX = 0
       this.nopeShow = false
       this.yepShow = false
@@ -108,22 +105,18 @@ export default {
 
     // 結果をresultに渡すメソッド 左:ないない,右:あるある,上:めっちゃわかる
     resultEvent(id, textContent, throwDirection) {
-      // console.log(id, throwDirection)
       const resultDirection = throwDirection.toString()
       const resultObj = { id: '', content: '', result: '' }
       if (resultDirection === 'Symbol(LEFT)') {
         resultObj.result = 'nope'
       } else if (resultDirection === 'Symbol(RIGHT)') {
         resultObj.result = 'yup'
-      } else {
-        console.log('エラー')
       }
       resultObj.id = id
       resultObj.content = textContent
       this.result.push(resultObj)
-      console.log(resultObj)
       this.addResult(resultObj)
-      this.endEvent()
+      this.endEvent(resultObj)
     },
 
     addResult(resultObj) {
@@ -134,10 +127,15 @@ export default {
       toggle: 'choicesResult/toggle',
     }),
 
-    // カードが０になったら結果画面にルーティングする
+    // カードが０になったら結果画面にルーティングとJSONファイルをサーバー側へ送る
     endEvent() {
       if (this.ip.key.length === 1) {
+        const sendData = this.$store.state.choicesResult.result
+        this.$axios.$post('/', sendData).then((res) => {
+          console.log('OK')
+        })
         this.$router.push({ path: '/resultView' })
+        // this.sendData(this.$store.state.choicesResult.result)
       }
     },
   },

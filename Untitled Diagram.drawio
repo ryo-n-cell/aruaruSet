@@ -43,8 +43,8 @@
                 <mxCell id="hyVbnHABrZ3aZhe9c6BI-59" value="Created_at" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;" parent="hyVbnHABrZ3aZhe9c6BI-57" vertex="1">
                     <mxGeometry x="30" width="150" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="hyVbnHABrZ3aZhe9c6BI-64" value="・1週間ごとに集計クエリが&lt;br&gt;発生。カウントした結果が&lt;br&gt;count_logに入る。&lt;br&gt;&lt;br&gt;・新しく作ったカラムに&lt;br&gt;yep_countなどは前の&lt;br&gt;yep_countなどの数に加算される。&lt;br&gt;&lt;br&gt;・集計クエリ完了後&lt;br&gt;status_countは削除される。" style="whiteSpace=wrap;html=1;fontStyle=1;startSize=30;align=left;" parent="1" vertex="1">
-                    <mxGeometry x="414" y="570" width="180" height="180" as="geometry"/>
+                <mxCell id="hyVbnHABrZ3aZhe9c6BI-64" value="・1日ごとに集計クエリが&lt;br&gt;発生。カウントした結果が&lt;br&gt;count_logに入る。&lt;br&gt;&lt;br&gt;・新しく作ったカラムに&lt;br&gt;yep_countなどは前の&lt;br&gt;yep_countなどの数に加算される。&lt;br&gt;&lt;br&gt;・集計クエリ完了後&lt;br&gt;status_countは削除される。" style="whiteSpace=wrap;html=1;fontStyle=1;startSize=30;align=left;" parent="1" vertex="1">
+                    <mxGeometry x="414" y="560" width="180" height="180" as="geometry"/>
                 </mxCell>
                 <mxCell id="hyVbnHABrZ3aZhe9c6BI-69" value="" style="endArrow=classic;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1.006;entryY=0.058;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="hyVbnHABrZ3aZhe9c6BI-64" target="lDaxDUbima5qf-x54nsP-46" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
