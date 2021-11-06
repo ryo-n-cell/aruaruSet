@@ -1,7 +1,7 @@
 <template>
   <vue-swing @throwout="onThrowout">
     <div
-      v-for="card in ip.key"
+      v-for="card in ip"
       :id="card.id"
       :key="card.id"
       class="card"
@@ -37,6 +37,7 @@ export default {
   // WebAPIから10問ほど引っ張ってくる
   async asyncData({ $axios }) {
     const ip = await $axios.$get('https://aruaruswipeapp.herokuapp.com/')
+    console.log(ip)
     return { ip }
   },
 
@@ -135,7 +136,6 @@ export default {
           console.log('OK')
         })
         this.$router.push({ path: '/resultView' })
-        // this.sendData(this.$store.state.choicesResult.result)
       }
     },
   },

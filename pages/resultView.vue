@@ -27,14 +27,8 @@
 import { mapMutations } from 'vuex'
 
 export default {
-  // data() {
-  //   return {
-  //     resultArray: [],
-  //   }
-  // },
   computed: {
     results() {
-      // return this.$store.getters['choiceResult/result']
       return this.$store.state.choicesResult.result
     },
   },
