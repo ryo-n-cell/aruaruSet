@@ -15,7 +15,9 @@
       </v-col>
     </v-row>
     <v-row no-gutters justify="center" align="center">
-      <v-btn x-large color="#1FD267" dark>やってみる！</v-btn>
+      <v-btn x-large color="#1FD267" nuxt to="/mainPage" dark
+        >やってみる！</v-btn
+      >
     </v-row>
     <section class="sectionSeparation">
       <v-row no-gutters justify="center" align="center">
@@ -44,20 +46,30 @@
       </v-row>
       <v-row no-gutters justify="center">
         <v-col cols="10">
-          <v-img :src="image_src2"> </v-img>
+          <v-carousel v-model="slideNo">
+            <v-carousel-item v-bind:key="slide.id" v-for="slide in slideArr">
+              <v-img :src="slide.slide_src"></v-img>
+            </v-carousel-item>
+          </v-carousel>
         </v-col>
       </v-row>
     </section>
     <section style="margin-top: 5vh">
       <v-row no-gutters justify="center" align="center">
         <h1>ロードマップ</h1>
+        <!-- <a href="#">Torello</a> -->
       </v-row>
     </section>
     <section style="margin: 5vh">
       <v-row no-gutters justify="center" align="center">
-        <v-btn x-large color="#1FD267" dark>やってみる！</v-btn>
+        <v-btn x-large color="#1FD267" nuxt to="/mainPage" dark
+          >やってみる！</v-btn
+        >
       </v-row>
     </section>
+    <v-footer>
+      <span>&copy; Ryota Nakamura {{ new Date().getFullYear() }}</span>
+    </v-footer>
   </v-container>
 </template>
 
@@ -67,8 +79,29 @@ export default {
     return {
       image_src1: require('@/assets/img/top_img/sorena_top.jpg'),
       image_src2: require('@/assets/img/top_img/what_app.jpg'),
-      // image_src3: require('@/assets/img/top_img/sorena_top.jpg'),
-      // image_src4: require('@/assets/img/top_img/sorena_top.jpg'),
+      slideNo: 0,
+      slideArr: [
+        {
+          id: 0,
+          slide_src: require('@/assets/img/top_img/what_app.jpg'),
+          letter: 'テスト1',
+        },
+        {
+          id: 1,
+          slide_src: require('@/assets/img/top_img/what_app.jpg'),
+          letter: 'テスト2',
+        },
+        {
+          id: 2,
+          slide_src: require('@/assets/img/top_img/what_app.jpg'),
+          letter: 'テスト3',
+        },
+        {
+          id: 3,
+          slide_src: require('@/assets/img/top_img/what_app.jpg'),
+          letter: 'テスト4',
+        },
+      ],
     }
   },
 }

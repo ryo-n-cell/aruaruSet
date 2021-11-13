@@ -3,9 +3,6 @@
     <v-main>
       <nuxt />
     </v-main>
-    <v-footer>
-      <span>&copy; Ryota Nakamura {{ new Date().getFullYear() }}</span>
-    </v-footer>
   </v-app>
 </template>
 

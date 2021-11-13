@@ -41,9 +41,15 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
   ],
-
+  proxy: {
+    '/': {
+      target: 'https://aruaruswipeapp.herokuapp.com',
+      pathRewrite: {'^/': ''},
+    }
+  },
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
+  axios: {prefix:  '/'},
+
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
