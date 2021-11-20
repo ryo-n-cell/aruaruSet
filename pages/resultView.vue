@@ -67,7 +67,7 @@ export default {
     },
     async sendPost(sendJson) {
       const response = await this.$axios
-        .$post('https://aruaruswipeapp.herokuapp.com/', sendJson)
+        .$post('https://aruaruswipeapp.herokuapp.com/sendResult', sendJson)
         .catch((err) => {
           return err.response
         })

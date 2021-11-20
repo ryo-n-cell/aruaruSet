@@ -25,7 +25,7 @@
       </v-row>
       <v-row no-gutters justify="center">
         <v-col cols="10">
-          <v-img :src="image_src2" max-height="230">
+          <v-img id="whyAppImg" :src="image_src2">
             <v-row no-gutters justify="end" align="end" style="height: 100%">
               <v-col class="descriptionLetter" cols="6">
                 <p>
@@ -130,11 +130,32 @@ export default {
 }
 .sectionSeparation {
   margin-top: 20vh;
-  /* height: 30vh; */
 }
 .descriptionLetter {
   font-size: 10px;
   font-weight: 700;
   margin-bottom: 5%;
+}
+@media screen and (min-width: 1024px) {
+  .topImg {
+    height: 100vh;
+  }
+  #topLetter {
+    font-size: 50px;
+    color: white;
+    background-color: black;
+    text-align: center;
+  }
+  #strLetter {
+    font-size: 60px;
+  }
+  #whyAppImg {
+    max-height: 80vh;
+  }
+  .descriptionLetter {
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 5%;
+  }
 }
 </style>

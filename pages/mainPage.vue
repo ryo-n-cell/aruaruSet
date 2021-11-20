@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="mainSection">
     <vue-swing @throwout="onThrowout">
       <div
         v-for="card in ip"
@@ -43,7 +43,7 @@ export default {
   components: { VueSwing },
   // WebAPIから10問ほど引っ張ってくる
   async asyncData({ $axios }) {
-    const ip = await $axios.$get('https://aruaruswipeapp.herokuapp.com/')
+    const ip = await $axios.$get('https://aruaruswipeapp.herokuapp.com/getData')
     return { ip }
   },
 
@@ -160,6 +160,16 @@ export default {
   left: calc(50% - 15vw);
   position: absolute;
 }
+@media screen and (max-width: 599px) {
+  .card {
+    margin-top: 15vh;
+    font-size: 25px;
+    height: 60vh;
+    width: 60vw;
+    justify-content: center;
+    left: calc(50% - 30vw);
+  }
+}
 .selectPosition {
   position: absolute;
   pointer-events: none;
@@ -186,24 +196,28 @@ export default {
     opacity: 1;
   }
 }
-@media screen and (max-width: 599px) {
-  /* 320pxまでの幅の場合に適応される */
-  .card {
-    margin-top: 15vh;
-    font-size: 25px;
-    height: 60vh;
-    width: 60vw;
-    justify-content: center;
-    left: calc(50% - 30vw);
-  }
-}
 
 /* ===========================(21/11/8~) */
+#mainSection {
+  height: 90%;
+}
 #mainFooter {
-  height: 10vh;
-  font-size: 40px;
+  height: 10%;
+  font-size: 30px;
 }
 #mainFooter > p {
   text-align: center;
+  margin-bottom: 0;
+}
+
+@media screen and (min-width: 1024px) {
+  .card {
+    margin-top: 10vh;
+    font-size: 40px;
+    height: 70vh;
+    width: 30vw;
+    justify-content: center;
+    left: calc(50% - 15vw);
+  }
 }
 </style>
