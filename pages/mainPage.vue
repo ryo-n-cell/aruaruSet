@@ -3,7 +3,7 @@
     <vue-swing @throwout="onThrowout">
       <div
         v-for="card in ip"
-        :id="card.id"
+        :id="card.questions_id"
         :key="card.questions_id"
         class="card"
         @pointerdown="swipeEventstart($event)"
@@ -24,7 +24,7 @@
             alt="yep"
           />
         </div>
-        <span>{{ card.question }}</span>
+        <span>{{ card.questions }}</span>
       </div>
     </vue-swing>
     <v-footer id="mainFooter" absolute>
@@ -43,7 +43,9 @@ export default {
   components: { VueSwing },
   // WebAPIから10問ほど引っ張ってくる
   async asyncData({ $axios }) {
-    const ip = await $axios.$get('https://aruaruswipeapp.herokuapp.com/getData')
+    const ip = await $axios.$get(
+      'https://aruaruswipeapp-test.herokuapp.com/getData'
+    )
     return { ip }
   },
 
@@ -98,8 +100,6 @@ export default {
       this.nopeShow = false
       this.yepShow = false
     },
-    // カードを消すアクションと結果処理メソッドに引数を渡す
-    // target=Nodeオブジェクト（https://developer.mozilla.org/ja/docs/Web/API/Node）
     onThrowout({ target, throwDirection }) {
       this.moveEvent = false
       this.nopeShow = false
@@ -111,8 +111,6 @@ export default {
       }, 100)
       this.resultEvent(target.id, target.textContent, throwDirection)
     },
-
-    // 結果をresultに渡すメソッド 左:ないない,右:あるある,
     resultEvent(id, textContent, throwDirection) {
       const resultDirection = throwDirection.toString()
       const resultObj = { id: '', content: '', result: '' }
@@ -127,15 +125,12 @@ export default {
       this.addResult(resultObj)
       this.endEvent(resultObj)
     },
-
     addResult(resultObj) {
       this.$store.commit('choicesResult/add', resultObj)
     },
-
     ...mapMutations({
       toggle: 'choicesResult/toggle',
     }),
-
     endEvent() {
       if (this.ip.length === 1) {
         this.$router.push({ path: '/resultView' })
@@ -144,7 +139,6 @@ export default {
   },
 }
 </script>
-
 <style>
 .card {
   align-items: center;

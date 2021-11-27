@@ -29,6 +29,16 @@
 import { mapMutations } from 'vuex'
 
 export default {
+  async fetch({ $axios, store }) {
+    const results = store.state.choicesResult.result
+    const anserId = results.map((anserData) => anserData.id)
+    const ip = await $axios.$get(
+      `https://aruaruswipeapp-test.herokuapp.com/resultsSoFar?qId=${anserId[0]}&qId=${anserId[1]}&qId=${anserId[2]}&qId=${anserId[3]}&qId=${anserId[4]}&qId=${anserId[5]}&qId=${anserId[6]}&qId=${anserId[7]}&qId=${anserId[8]}&qId=${anserId[9]}`
+    )
+    console.log({ ip })
+    return { ip }
+  },
+
   computed: {
     results() {
       return this.$store.state.choicesResult.result
@@ -42,11 +52,9 @@ export default {
     },
     postData() {
       const sendData = this.results
-      console.log(sendData)
       const sendJson = []
       sendData.forEach((resultsData) => {
         let resultsObj = {}
-        console.log(resultsData.result)
         let statusVar = ''
         if (resultsData.result === 'yup') {
           statusVar = true
@@ -57,7 +65,6 @@ export default {
         }
         resultsObj = {
           question_id: resultsData.id,
-          category_id: 1,
           status: statusVar,
         }
         sendJson.push(resultsObj)
@@ -67,7 +74,7 @@ export default {
     },
     async sendPost(sendJson) {
       const response = await this.$axios
-        .$post('https://aruaruswipeapp.herokuapp.com/sendResult', sendJson)
+        .$post('https://aruaruswipeapp-test.herokuapp.com/sendResult', sendJson)
         .catch((err) => {
           return err.response
         })
