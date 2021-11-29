@@ -1,6 +1,7 @@
 <template>
   <v-container class="topPage" fluid pa-0>
     <v-row no-gutters class="topView" justify="center" align="center">
+      <div id="titleBox">SORENA<br />(βバージョン)</div>
       <v-col pt-0>
         <v-img class="topImg" :src="image_src1">
           <v-row id="topInnner" no-gutters justify="center" align="center">
@@ -110,6 +111,16 @@ export default {
 .topPage {
   font-family: 'Roboto-Black';
 }
+#titleBox {
+  width: 30vw;
+  position: absolute;
+  z-index: 1;
+  top: 0px;
+  left: 0px;
+  color: white;
+  background-color: rgb(121, 0, 113);
+  text-align: center;
+}
 .topView {
   height: 80vh;
 }
@@ -137,6 +148,9 @@ export default {
   margin-bottom: 5%;
 }
 @media screen and (min-width: 1024px) {
+  #titleBox {
+    width: 10vw;
+  }
   .topImg {
     height: 100vh;
   }

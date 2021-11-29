@@ -1,6 +1,11 @@
 <template>
   <div>
     <v-subheader> 結果 </v-subheader>
+    <v-row class="text-center resultsList">
+      <v-col cols="9">答えた問題</v-col>
+      <v-col cols="2"> 回答</v-col>
+      <v-col cols="1">yep割合</v-col>
+    </v-row>
     <v-row
       v-for="item in results"
       :key="item.id"
@@ -8,7 +13,8 @@
       class="text-center resultsList"
     >
       <v-col class="resultList" cols="9">{{ item.content }}</v-col>
-      <v-col cols="3">{{ item.result }}</v-col>
+      <v-col cols="2">{{ item.result }}</v-col>
+      <v-col cols="1">{{ item.trueRatio }}%</v-col>
     </v-row>
     <v-row no-gutters class="text-center">
       <v-col cols="12">
@@ -29,9 +35,22 @@
 import { mapMutations } from 'vuex'
 
 export default {
+  async fetch({ $axios, store }) {
+    const storeResults = store.state.choicesResult.result
+    const anserId = storeResults.map((anserData) => anserData.id)
+    const ansersRatio = await $axios.$get(
+      `https://aruaruswipeapp-test.herokuapp.com/resultsSoFar?qId=${anserId[0]}&qId=${anserId[1]}&qId=${anserId[2]}&qId=${anserId[3]}&qId=${anserId[4]}&qId=${anserId[5]}&qId=${anserId[6]}&qId=${anserId[7]}&qId=${anserId[8]}&qId=${anserId[9]}`
+    )
+    for (let i = 0; i <= 9; i++) {
+      storeResults[i].trueRatio = ansersRatio[i].trueRatio
+    }
+  },
+
   computed: {
     results() {
-      return this.$store.state.choicesResult.result
+      const storeResults = this.$store.state.choicesResult.result
+      console.log(storeResults)
+      return storeResults
     },
   },
   methods: {
@@ -42,32 +61,28 @@ export default {
     },
     postData() {
       const sendData = this.results
-      console.log(sendData)
       const sendJson = []
       sendData.forEach((resultsData) => {
         let resultsObj = {}
-        console.log(resultsData.result)
         let statusVar = ''
         if (resultsData.result === 'yup') {
           statusVar = true
         } else if (resultsData.result === 'nope') {
           statusVar = false
         } else {
-          console.log('error')
+          console.log('予期しないエラーが発生しました。')
         }
         resultsObj = {
           question_id: resultsData.id,
-          category_id: 1,
           status: statusVar,
         }
         sendJson.push(resultsObj)
       })
-      console.log(sendJson)
       this.sendPost(sendJson)
     },
     async sendPost(sendJson) {
       const response = await this.$axios
-        .$post('https://aruaruswipeapp.herokuapp.com/sendResult', sendJson)
+        .$post('https://aruaruswipeapp-test.herokuapp.com/sendResult', sendJson)
         .catch((err) => {
           return err.response
         })

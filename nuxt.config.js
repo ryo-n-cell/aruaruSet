@@ -43,7 +43,7 @@ export default {
   ],
   proxy: {
     '/': {
-      target: 'https://aruaruswipeapp.herokuapp.com',
+      target: 'https://aruaruswipeapp-test.herokuapp.com',
       pathRewrite: {'^/': ''},
     }
   },
