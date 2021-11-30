@@ -49,7 +49,6 @@ export default {
   computed: {
     results() {
       const storeResults = this.$store.state.choicesResult.result
-      console.log(storeResults)
       return storeResults
     },
   },
@@ -69,8 +68,6 @@ export default {
           statusVar = true
         } else if (resultsData.result === 'nope') {
           statusVar = false
-        } else {
-          console.log('予期しないエラーが発生しました。')
         }
         resultsObj = {
           question_id: resultsData.id,
