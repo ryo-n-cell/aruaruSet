@@ -1,31 +1,38 @@
 <template>
-  <vue-swing @throwout="onThrowout">
-    <div
-      v-for="card in ip"
-      :id="card.id"
-      :key="card.id"
-      class="card"
-      @pointerdown="swipeEventstart($event)"
-      @pointermove="swipeEventmove($event)"
-      @pointerup="swipeEventup()"
-    >
-      <div class="selectPosition">
-        <img
-          v-if="nopeShow"
-          class="nope"
-          src="@/assets/img/nope-txt.png"
-          alt="nope"
-        />
-        <img
-          v-if="yepShow"
-          class="yep"
-          src="@/assets/img/yep-txt.png"
-          alt="yep"
-        />
+  <div id="mainSection">
+    <vue-swing @throwout="onThrowout">
+      <div
+        v-for="card in ip"
+        :id="card.questions_id"
+        :key="card.questions_id"
+        class="card"
+        @pointerdown="swipeEventstart($event)"
+        @pointermove="swipeEventmove($event)"
+        @pointerup="swipeEventup()"
+      >
+        <div class="selectPosition">
+          <img
+            v-if="nopeShow"
+            class="nope"
+            src="@/assets/img/nope-txt.png"
+            alt="nope"
+          />
+          <img
+            v-if="yepShow"
+            class="yep"
+            src="@/assets/img/yep-txt.png"
+            alt="yep"
+          />
+        </div>
+        <span>{{ card.questions }}</span>
       </div>
-      <span>{{ card.question }}</span>
-    </div>
-  </vue-swing>
+    </vue-swing>
+    <v-footer id="mainFooter" absolute>
+      <v-row no-gutters justify="center" align="center">
+        <p>{{ progressCount }}/10</p>
+      </v-row>
+    </v-footer>
+  </div>
 </template>
 
 <script>
@@ -36,8 +43,7 @@ export default {
   components: { VueSwing },
   // WebAPIから10問ほど引っ張ってくる
   async asyncData({ $axios }) {
-    const ip = await $axios.$get('https://aruaruswipeapp.herokuapp.com/')
-    console.log(ip)
+    const ip = await $axios.$get('https://aruaruswipeapp.herokuapp.com/getData')
     return { ip }
   },
 
@@ -58,6 +64,7 @@ export default {
       // ディグレクティブアニメーションは後で書く
       nopeShow: false,
       yepShow: false,
+      progressCount: 1,
     }
   },
 
@@ -91,20 +98,17 @@ export default {
       this.nopeShow = false
       this.yepShow = false
     },
-    // カードを消すアクションと結果処理メソッドに引数を渡す
-    // target=Nodeオブジェクト（https://developer.mozilla.org/ja/docs/Web/API/Node）
     onThrowout({ target, throwDirection }) {
       this.moveEvent = false
       this.nopeShow = false
       this.yepShow = false
       this.criteriaCoordinatesX = 0
       setTimeout(() => {
-        this.ip.key.pop()
+        this.progressCount += 1
+        this.ip.pop()
       }, 100)
       this.resultEvent(target.id, target.textContent, throwDirection)
     },
-
-    // 結果をresultに渡すメソッド 左:ないない,右:あるある,上:めっちゃわかる
     resultEvent(id, textContent, throwDirection) {
       const resultDirection = throwDirection.toString()
       const resultObj = { id: '', content: '', result: '' }
@@ -119,29 +123,20 @@ export default {
       this.addResult(resultObj)
       this.endEvent(resultObj)
     },
-
     addResult(resultObj) {
       this.$store.commit('choicesResult/add', resultObj)
     },
-
     ...mapMutations({
       toggle: 'choicesResult/toggle',
     }),
-
-    // カードが０になったら結果画面にルーティングとJSONファイルをサーバー側へ送る
     endEvent() {
-      if (this.ip.key.length === 1) {
-        const sendData = this.$store.state.choicesResult.result
-        this.$axios.$post('/', sendData).then((res) => {
-          console.log('OK')
-        })
+      if (this.ip.length === 1) {
         this.$router.push({ path: '/resultView' })
       }
     },
   },
 }
 </script>
-
 <style>
 .card {
   align-items: center;
@@ -156,6 +151,16 @@ export default {
   justify-content: center;
   left: calc(50% - 15vw);
   position: absolute;
+}
+@media screen and (max-width: 599px) {
+  .card {
+    margin-top: 15vh;
+    font-size: 25px;
+    height: 60vh;
+    width: 60vw;
+    justify-content: center;
+    left: calc(50% - 30vw);
+  }
 }
 .selectPosition {
   position: absolute;
@@ -183,15 +188,28 @@ export default {
     opacity: 1;
   }
 }
-@media screen and (max-width: 599px) {
-  /* 320pxまでの幅の場合に適応される */
+
+/* ===========================(21/11/8~) */
+#mainSection {
+  height: 90%;
+}
+#mainFooter {
+  height: 10%;
+  font-size: 30px;
+}
+#mainFooter > p {
+  text-align: center;
+  margin-bottom: 0;
+}
+
+@media screen and (min-width: 1024px) {
   .card {
-    margin-top: 1vh;
-    font-size: 25px;
-    height: 60vh;
-    width: 50vw;
+    margin-top: 10vh;
+    font-size: 40px;
+    height: 70vh;
+    width: 30vw;
     justify-content: center;
-    left: calc(50% - 25vw);
+    left: calc(50% - 15vw);
   }
 }
 </style>
