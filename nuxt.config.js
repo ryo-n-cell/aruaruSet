@@ -55,6 +55,11 @@ export default {
     id: 'G-45C50XKHPD',
     id: process.env.GOOGLE_ANALYTICS_ID,
   },
+  publicRuntimeConfig: {
+    googleAnalytics: {
+      id: process.env.GOOGLE_ANALYTICS_ID
+    }
+  },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
