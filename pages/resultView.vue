@@ -39,7 +39,7 @@ export default {
     const storeResults = store.state.choicesResult.result
     const anserId = storeResults.map((anserData) => anserData.id)
     const ansersRatio = await $axios.$get(
-      `https://aruaruswipeapp-test.herokuapp.com/resultsSoFar?qId=${anserId[0]}&qId=${anserId[1]}&qId=${anserId[2]}&qId=${anserId[3]}&qId=${anserId[4]}&qId=${anserId[5]}&qId=${anserId[6]}&qId=${anserId[7]}&qId=${anserId[8]}&qId=${anserId[9]}`
+      `https://aruaruswipeapp.herokuapp.com/resultsSoFar?qId=${anserId[0]}&qId=${anserId[1]}&qId=${anserId[2]}&qId=${anserId[3]}&qId=${anserId[4]}&qId=${anserId[5]}&qId=${anserId[6]}&qId=${anserId[7]}&qId=${anserId[8]}&qId=${anserId[9]}`
     )
     for (let i = 0; i <= 9; i++) {
       storeResults[i].trueRatio = ansersRatio[i].trueRatio
@@ -79,7 +79,7 @@ export default {
     },
     async sendPost(sendJson) {
       const response = await this.$axios
-        .$post('https://aruaruswipeapp-test.herokuapp.com/sendResult', sendJson)
+        .$post('https://aruaruswipeapp.herokuapp.com/sendResult', sendJson)
         .catch((err) => {
           return err.response
         })
