@@ -52,7 +52,7 @@ export default {
   axios: {prefix:  '/'},
 
   googleAnalytics: {
-    id: 'G-45C50XKHPD',
+    id: 'G-5BX4ZPXZP0',
     id: process.env.GOOGLE_ANALYTICS_ID,
   },
   publicRuntimeConfig: {
