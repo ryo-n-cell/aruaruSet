@@ -43,9 +43,7 @@ export default {
   components: { VueSwing },
   // WebAPIから10問ほど引っ張ってくる
   async asyncData({ $axios }) {
-    const ip = await $axios.$get(
-      'https://aruaruswipeapp-test.herokuapp.com/getData'
-    )
+    const ip = await $axios.$get('https://aruaruswipeapp.herokuapp.com/getData')
     return { ip }
   },
 
