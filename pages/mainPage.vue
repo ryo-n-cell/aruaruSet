@@ -1,6 +1,6 @@
 <template>
   <div id="mainSection">
-    <vue-swing @throwout="onThrowout">
+    <vue-swing @throwout="onThrowout" :config="config">
       <div
         v-for="card in ip"
         :id="card.questions_id"
@@ -52,9 +52,12 @@ export default {
       data: {},
       config: {
         allowedDirections: [VueSwing.Direction.LEFT, VueSwing.Direction.RIGHT],
-        throwOutConfidence: 2,
-        minThrowOutDistance: 250,
-        maxThrowOutDistance: 300,
+        isThrowOut: (xOffset, yOffset, element, throwOutConfidence) => {
+          return throwOutConfidence > 0.5
+        },
+        minThrowOutDistance: 100,
+        maxThrowOutDistance: 120,
+        maxRotation: 50,
       },
       result: [],
       // カード要素の左側x軸を基準とする
