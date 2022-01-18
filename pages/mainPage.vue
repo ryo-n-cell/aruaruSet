@@ -1,6 +1,6 @@
 <template>
   <div id="mainSection">
-    <vue-swing @throwout="onThrowout" :config="config">
+    <vue-swing :config="config" @throwout="onThrowout">
       <div
         v-for="card in ip"
         :id="card.questions_id"
@@ -13,14 +13,14 @@
         <div class="selectPosition">
           <img
             v-if="nopeShow"
-            class="nope"
-            src="@/assets/img/nope-txt.png"
+            id="nope"
+            src="~/assets/img/mainPage/naiwa.svg"
             alt="nope"
           />
           <img
             v-if="yepShow"
-            class="yep"
-            src="@/assets/img/yep-txt.png"
+            id="yep"
+            src="~/assets/img/mainPage/sorena.svg"
             alt="yep"
           />
         </div>
@@ -41,7 +41,6 @@ import { mapMutations } from 'vuex'
 
 export default {
   components: { VueSwing },
-  // WebAPIから10問ほど引っ張ってくる
   async asyncData({ $axios }) {
     const ip = await $axios.$get('https://aruaruswipeapp.herokuapp.com/getData')
     return { ip }
@@ -49,7 +48,10 @@ export default {
 
   data() {
     return {
-      data: {},
+      data: {
+        yepImgSrc: '@/assets/img/mainPage/sorena.svg',
+        nopeImgSrc: '@/assets/img/mainPage/naiwa.svg',
+      },
       config: {
         allowedDirections: [VueSwing.Direction.LEFT, VueSwing.Direction.RIGHT],
         isThrowOut: (xOffset, yOffset, element, throwOutConfidence) => {
@@ -60,11 +62,9 @@ export default {
         maxRotation: 50,
       },
       result: [],
-      // カード要素の左側x軸を基準とする
       moveEvent: false,
       criteriaCoordinatesX: 0,
       swipeDistance: 0,
-      // ディグレクティブアニメーションは後で書く
       nopeShow: false,
       yepShow: false,
       progressCount: 1,
@@ -78,7 +78,6 @@ export default {
   },
 
   methods: {
-    // 座標イベント
     swipeEventstart(e) {
       this.criteriaCoordinatesX = e.clientX
       this.moveEvent = true
@@ -155,6 +154,16 @@ export default {
   left: calc(50% - 15vw);
   position: absolute;
 }
+@media screen and (min-width: 1024px) {
+  .card {
+    margin-top: 10vh;
+    font-size: 40px;
+    height: 70vh;
+    width: 30vw;
+    justify-content: center;
+    left: calc(50% - 15vw);
+  }
+}
 @media screen and (max-width: 599px) {
   .card {
     margin-top: 15vh;
@@ -165,12 +174,19 @@ export default {
     left: calc(50% - 30vw);
   }
 }
+
 .selectPosition {
   position: absolute;
   pointer-events: none;
 }
-.nope .yep {
-  position: absolute;
+
+#yep {
+  width: 20vw;
+  pointer-events: none;
+}
+
+#nope {
+  width: 20vw;
   pointer-events: none;
 }
 
@@ -192,7 +208,6 @@ export default {
   }
 }
 
-/* ===========================(21/11/8~) */
 #mainSection {
   height: 90%;
 }
@@ -203,16 +218,5 @@ export default {
 #mainFooter > p {
   text-align: center;
   margin-bottom: 0;
-}
-
-@media screen and (min-width: 1024px) {
-  .card {
-    margin-top: 10vh;
-    font-size: 40px;
-    height: 70vh;
-    width: 30vw;
-    justify-content: center;
-    left: calc(50% - 15vw);
-  }
 }
 </style>
