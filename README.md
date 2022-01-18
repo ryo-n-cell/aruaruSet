@@ -10,10 +10,7 @@
 
 ## ロードマップ
 
-・メインページのスワイプ時の img を日本語に変える
-
-・Top のファーストビューを分かりやすくする。
-=>ワンスワイプでのチュートリアル表示
+このリポジトリの[issue](https://github.com/ryo-n-cell/aruaruSet/issues)か[Project](https://github.com/ryo-n-cell/aruaruSet/projects/1)に記入
 
 ## Build Setup
 
