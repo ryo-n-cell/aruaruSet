@@ -1,10 +1,26 @@
-# aruaruSwip
+# Sorena
+
+使用ツール
+
+・@nuxtjs/axios: ^5.13.1,
+
+・es6-promise: ^4.2.8,
+
+・nuxt: ^2.15.3,
+
+・swing: ^3.1.4,
+
+・vue-swing: ^0.0.10,
+
+・vue-tinder: ^2.0.3,ｖ
+
+・vuex: ^3.6.2
 
 ## Build Setup
 
 ```bash
 # install dependencies
-$ yarn install
+$ yarn installv
 
 # serve with hot reload at localhost:3000
 $ yarn dev
@@ -39,16 +55,4 @@ For detailed explanation on how things work, check out [Nuxt.js docs](https://nu
 　・上記以外
 　　・フロントとバックのやり取り（query操作など
 　　・
-```
-
-```plans
-~4/21
-・スワイプ時のフェードイン、フェードアウト
-・スマホで見るためにフロント側をビルドしてデプロイする。
-
-4/22~4/24
-・Spuerを消して選択をBooleanにする
-・導入ページから完了ページまでの画面作成
-4/24
-・結果を見せる
 ```
