@@ -62,7 +62,6 @@ export default {
         maxRotation: 50,
       },
       result: [],
-      // カード要素の左側x軸を基準とする
       moveEvent: false,
       criteriaCoordinatesX: 0,
       swipeDistance: 0,
@@ -79,7 +78,6 @@ export default {
   },
 
   methods: {
-    // 座標イベント
     swipeEventstart(e) {
       this.criteriaCoordinatesX = e.clientX
       this.moveEvent = true
