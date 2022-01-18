@@ -6,7 +6,7 @@
 
 サーバー側リポジトリは[こっち](https://github.com/ryo-n-cell/aruaruappAPI)
 
-どのようなアプリかは[こちら](https://qiita.com/Ryo-N-cell/items/16b62396eb32b01f5d94)
+どのようなアプリかは[こちらのQiitaで](https://qiita.com/Ryo-N-cell/items/16b62396eb32b01f5d94)
 
 ## ロードマップ
 
