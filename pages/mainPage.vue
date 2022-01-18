@@ -14,13 +14,13 @@
           <img
             v-if="nopeShow"
             id="nope"
-            src="@/assets/img/naiwa.svg"
+            src="~/assets/img/mainPage/naiwa.svg"
             alt="nope"
           />
           <img
             v-if="yepShow"
             id="yep"
-            src="@/assets/img/sorena.svg"
+            src="~/assets/img/mainPage/sorena.svg"
             alt="yep"
           />
         </div>
@@ -41,7 +41,6 @@ import { mapMutations } from 'vuex'
 
 export default {
   components: { VueSwing },
-  // WebAPIから10問ほど引っ張ってくる
   async asyncData({ $axios }) {
     const ip = await $axios.$get(
       'https://aruaruswipeapp-test.herokuapp.com/getData'
@@ -51,7 +50,10 @@ export default {
 
   data() {
     return {
-      data: {},
+      data: {
+        yepImgSrc: '@/assets/img/mainPage/sorena.svg',
+        nopeImgSrc: '@/assets/img/mainPage/naiwa.svg',
+      },
       config: {
         allowedDirections: [VueSwing.Direction.LEFT, VueSwing.Direction.RIGHT],
         isThrowOut: (xOffset, yOffset, element, throwOutConfidence) => {
