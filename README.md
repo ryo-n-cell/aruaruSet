@@ -3,14 +3,14 @@
 ## 概要
 
 みんなの共感を集める[SRENA](https://sorena-aruaru.com/)のフロント側リポジトリです。
-どのようなアプリかは[こちら](https://qiita.com/Ryo-N-cell/items/16b62396eb32b01f5d94)
+
+サーバー側リポジトリは[こっち](https://github.com/ryo-n-cell/aruaruappAPI)
+
+どのようなアプリかは[こちらのQiitaで](https://qiita.com/Ryo-N-cell/items/16b62396eb32b01f5d94)
 
 ## ロードマップ
 
-・メインページのスワイプ時の img を日本語に変える
-
-・Top のファーストビューを分かりやすくする。
-=>ワンスワイプでのチュートリアル表示
+このリポジトリの[issue](https://github.com/ryo-n-cell/aruaruSet/issues)か[Project](https://github.com/ryo-n-cell/aruaruSet/projects/1)に記入
 
 ## Build Setup
 
