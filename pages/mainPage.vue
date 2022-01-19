@@ -189,7 +189,17 @@ export default {
   width: 20vw;
   pointer-events: none;
 }
+@media screen and (max-width: 599px) {
+  #yep {
+    width: 40vw;
+    pointer-events: none;
+  }
 
+  #nope {
+    width: 40vw;
+    pointer-events: none;
+  }
+}
 .nope-enter-active {
   animation: swipe-in 1s;
 }
