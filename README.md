@@ -3,7 +3,8 @@
 ## 概要
 
 みんなの共感を集める[SRENA](https://sorena-aruaru.com/)のフロント側リポジトリです。
-どのようなアプリかは[こちら](https://qiita.com/Ryo-N-cell/items/16b62396eb32b01f5d94)
+サーバーは[こっち](https://github.com/ryo-n-cell/aruaruappAPI)
+どのようなアプリかは[こちらの Qiita で](https://qiita.com/Ryo-N-cell/items/16b62396eb32b01f5d94)
 
 ## ロードマップ
 
