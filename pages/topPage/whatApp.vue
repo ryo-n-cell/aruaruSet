@@ -1,24 +1,26 @@
 <template>
   <v-container class="topPage" fluid pa-0>
-    <v-row no-gutters class="topView" justify="center" align="center">
-      <v-col pt-0>
-        <v-img class="topImg" :src="image_src">
-          <v-row id="topInnner" no-gutters justify="center" align="center">
-            <v-col cols="10">
-              <p id="topLetter">
-                みんなの 「<strong id="strLetter">それな</strong
-                >」をシェアしよう！
-              </p>
-            </v-col>
-          </v-row>
-        </v-img>
-      </v-col>
-    </v-row>
-    <v-row no-gutters justify="center" align="center">
-      <v-btn x-large color="#1FD267" nuxt to="/mainPage" dark
-        >やってみる！</v-btn
-      >
-    </v-row>
+    <section class="sectionSeparation">
+      <v-row no-gutters justify="center" align="center">
+        <h1>なんのアプリ？</h1>
+      </v-row>
+      <v-row no-gutters justify="center">
+        <v-col cols="10">
+          <v-img id="whyAppImg" :src="image_src">
+            <v-row no-gutters justify="end" align="end" style="height: 100%">
+              <v-col class="descriptionLetter" cols="6">
+                <p>
+                  みんなのあるあるネタをスワイプ<br />
+                  して答えていくアプリです。<br />
+                  世界中のみんなの「あるよねー」<br />
+                  が見れます。
+                </p>
+              </v-col>
+            </v-row>
+          </v-img>
+        </v-col>
+      </v-row>
+    </section>
   </v-container>
 </template>
 
@@ -27,7 +29,7 @@ export default {
   components: true,
   data() {
     return {
-      image_src: require('@/assets/img/top_img/sorena_top.jpg'),
+      image_src: require('@/assets/img/top_img/what_app.jpg'),
     }
   },
 }
