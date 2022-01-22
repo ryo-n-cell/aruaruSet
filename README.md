@@ -8,6 +8,8 @@
 
 どのようなアプリかは[こちらのQiitaで](https://qiita.com/Ryo-N-cell/items/16b62396eb32b01f5d94)
 
+フロント側のワイヤーフレームはこの[Figma](https://www.figma.com/file/6fPUE9GhPdo7PRx26xH4kb/Sorena_farstView?node-id=0%3A1)
+
 ## ロードマップ
 
 このリポジトリの[issue](https://github.com/ryo-n-cell/aruaruSet/issues)か[Project](https://github.com/ryo-n-cell/aruaruSet/projects/1)に記入
