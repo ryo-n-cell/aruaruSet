@@ -1,22 +1,39 @@
 <template>
   <v-container class="topPage" fluid pa-0>
-    <v-row no-gutters class="topView" justify="center" align="center">
-      <v-col pt-0>
-        <v-img class="topImg" :src="image_src">
-          <v-row id="topInnner" no-gutters justify="center" align="center">
-            <v-col cols="10">
-              <p id="topLetter">
-                みんなの 「<strong id="strLetter">それな</strong
-                >」をシェアしよう！
-              </p>
-            </v-col>
-          </v-row>
-        </v-img>
-      </v-col>
+    <v-row no-gutters class="topView" justify="center">
+      <v-img height="70vh" class="topImg" :src="image_src">
+        <v-row id="topInnner" no-gutters justify="center" align="center">
+          <v-col cols="10">
+            <p id="topLetter">
+              みんなの 「<strong id="strLetter">それな</strong
+              >」をシェアしよう！
+            </p>
+          </v-col>
+        </v-row>
+      </v-img>
     </v-row>
-    <v-row no-gutters justify="center" align="center">
-      <v-btn x-large color="#1FD267" nuxt to="/mainPage" dark
-        >やってみる！</v-btn
+    <v-row class="mainBtn1" no-gutters justify="center" align="center">
+      <v-btn
+        height="10vh"
+        min-width="90vw"
+        x-large
+        color="#9D7575"
+        nuxt
+        to="/mainPage"
+        dark
+        >やってみる？</v-btn
+      >
+    </v-row>
+    <v-row class="mainBtn2" no-gutters justify="center" align="center">
+      <v-btn
+        height="5vh"
+        min-width="90vw"
+        x-large
+        color="#908E8E"
+        nuxt
+        to="/mainPage"
+        dark
+        >作者について</v-btn
       >
     </v-row>
   </v-container>
@@ -24,10 +41,28 @@
 
 <script>
 export default {
-  components: true,
   data() {
     return {
-      image_src: require('@/assets/img/top_img/sorena_top.jpg'),
+      image_src: require('@/assets/img/top_img/topPageCarousels/sorena_top.jpg'),
+      carouselsArr: [
+        {
+          id: 0,
+          image_src: '@/assets/img/top_img/topPageCarousels/sorena_top.jpg',
+        },
+        {
+          id: 1,
+          image_src: '@/assets/img/top_img/topPageCarousels/fastApp.png',
+        },
+        {
+          id: 2,
+          image_src:
+            '@/assets/img/top_img/topPageCarousels/swipExplanation.png',
+        },
+        {
+          id: 3,
+          image_src: '@/assets/img/top_img/topPageCarousels/result.jpg',
+        },
+      ],
     }
   },
 }
@@ -46,11 +81,8 @@ export default {
   background-color: rgb(121, 0, 113);
   text-align: center;
 }
-.topView {
-  height: 80vh;
-}
 .topImg {
-  height: 60vh;
+  height: 100%;
 }
 #topInnner {
   height: 100%;
@@ -64,20 +96,13 @@ export default {
   background-color: black;
   text-align: center;
 }
-.sectionSeparation {
-  margin-top: 20vh;
+.mainBtn1 {
+  height: 15vh;
 }
-.descriptionLetter {
-  font-size: 10px;
-  font-weight: 700;
-  margin-bottom: 5%;
+.mainBtn2 {
+  height: 10vh;
 }
-.slideLetter {
-  font-size: 10px;
-  margin-top: 2vh;
-  z-index: 1;
-  color: black;
-}
+
 @media screen and (min-width: 1024px) {
   #titleBox {
     width: 10vw;
@@ -102,16 +127,8 @@ export default {
     widows: 50vh;
     text-align: center;
   }
-  .descriptionLetter {
-    font-size: 30px;
-    font-weight: 700;
-    margin-bottom: 5%;
-  }
   .sizingPc {
     height: 40%;
-  }
-  .slideLetter {
-    font-size: 20px;
   }
 }
 </style>

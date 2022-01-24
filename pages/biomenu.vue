@@ -43,22 +43,22 @@ export default {
       slideArr: [
         {
           id: 0,
-          slide_src: require('@/assets/img/top_img/howTo/fastApp.png'),
+          slide_src: require('@/assets/img/top_img/topPageCarousels/fastApp.png'),
           letter: '最初に質問のカードが出ます',
         },
         {
           id: 1,
-          slide_src: require('@/assets/img/top_img/howTo/yepImg.png'),
+          slide_src: require('@/assets/img/top_img/topPageCarousels/yepImg.png'),
           letter: '「あるある」ならば右へスワイプ',
         },
         {
           id: 2,
-          slide_src: require('@/assets/img/top_img/howTo/nopImg.png'),
+          slide_src: require('@/assets/img/top_img/topPageCarousels/nopImg.png'),
           letter: '「ないない」ならば左へスワイプ。これを１０回繰り返します',
         },
         {
           id: 3,
-          slide_src: require('@/assets/img/top_img/howTo/result.jpg'),
+          slide_src: require('@/assets/img/top_img/topPageCarousels/result.jpg'),
           letter: '最後に結果と今までの「あるある」の割合が出てきます。',
         },
       ],

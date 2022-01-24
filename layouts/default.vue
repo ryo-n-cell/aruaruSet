@@ -1,9 +1,7 @@
 <template>
   <v-app>
     <v-main>
-      <a class="transitionTest"> 上</a>
       <Nuxt />
-      <a class="transitionTest"> 下</a>
     </v-main>
   </v-app>
 </template>
@@ -15,24 +13,20 @@ export default {
       pageCount: 1,
       pageCountViwe: [
         {
-          pageId: 1,
+          pageId: 0,
           pagePath: '/',
         },
         {
+          pageId: 1,
+          pagePath: '/menu',
+        },
+        {
           pageId: 2,
-          pagePath: '/topPage/whatApp',
+          pagePath: '/biomenu',
         },
         {
           pageId: 3,
-          pagePath: '/topPage/howTo',
-        },
-        {
-          pageId: 4,
-          pagePath: '/topPage/menu',
-        },
-        {
-          pageId: 5,
-          pagePath: '/topPage/bio',
+          pagePath: '/Bio',
         },
       ],
       title: 'SORENA',
@@ -46,17 +40,7 @@ export default {
   },
   methods: {
     transitionAction() {
-      if (this.pageCount === 1) {
-        this.$router.push('/')
-      } else if (this.pageCount === 2) {
-        this.$router.push('/topPage/whatApp')
-      } else if (this.pageCount === 3) {
-        this.$router.push('/topPage/howTo')
-      } else if (this.pageCount === 4) {
-        this.$router.push('/topPage/menu')
-      } else if (this.pageCount === 5) {
-        this.$router.push('/topPage/bio')
-      }
+      this.$router.push(this.pageCountViwe[this.pageCount].pagePath)
     },
   },
 }
