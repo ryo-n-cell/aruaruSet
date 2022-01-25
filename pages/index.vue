@@ -45,7 +45,7 @@
         x-large
         color="#9D7575"
         nuxt
-        to="/mainPage"
+        to="/menu"
         dark
         >やってみる？</v-btn
       >
@@ -57,7 +57,7 @@
         x-large
         color="#908E8E"
         nuxt
-        to="/mainPage"
+        to="/biomenu"
         dark
         >作者について</v-btn
       >
@@ -96,12 +96,6 @@ export default {
       ],
     }
   },
-  // computed: {
-  //   transitionComp() {
-  //     this.transitionAction()
-  //     return this.pageCount
-  //   },
-  // },
 }
 </script>
 <style lang="scss">
