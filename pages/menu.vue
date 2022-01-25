@@ -18,6 +18,7 @@
         x-large
         color="#9D7575"
         dark
+        @click="actionRouter(item.id)"
         >{{ item.attribute }}<br />あるある</v-btn
       >
     </v-row>
@@ -42,16 +43,28 @@
         nuxt
         to="/biomenu"
         dark
-        >作者について</v-btn
+        >作者について
+      </v-btn>
+    </v-row>
+    <v-dialog v-model="notInstalledDialog" width="500">
+      <v-card>
+        <v-card-text>
+          <p style="font-size: 20px">
+            ごめんなさい！まだ未実装です！<br />
+            近いうちに実装するので<br />
+            他のあるあるを遊んでみてね！
+          </p>
+        </v-card-text></v-card
       >
-    </v-row></v-container
-  >
+    </v-dialog>
+  </v-container>
 </template>
 
 <script>
 export default {
   data() {
     return {
+      notInstalledDialog: false,
       attributeArr: [
         {
           id: 0,
@@ -75,6 +88,15 @@ export default {
         },
       ],
     }
+  },
+  methods: {
+    actionRouter(itemId) {
+      if (this.attributeArr[itemId].urlRoot === '') {
+        this.notInstalledDialog = true
+      } else {
+        this.$router.push(this.attributeArr[itemId].urlRoot)
+      }
+    },
   },
 }
 </script>
