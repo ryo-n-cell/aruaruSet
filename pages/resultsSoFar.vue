@@ -1,5 +1,5 @@
 <template>
-  <v-container class="biomenu" fluid pa-0><p>biomenu</p></v-container>
+  <v-container class="menuPage" fluid pa-0> <p>今までの結果</p></v-container>
 </template>
 
 <script>

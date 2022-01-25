@@ -28,6 +28,10 @@ export default {
           pageId: 3,
           pagePath: '/Bio',
         },
+        {
+          pageId: 4,
+          pagePath: '/resultsSoFar',
+        },
       ],
       title: 'SORENA',
     }
