@@ -38,7 +38,7 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    // https://go.nuxtjs.dev/axios
+    'nuxt-webfontloader',
     '@nuxtjs/axios',
     '@nuxtjs/google-analytics'
   ],

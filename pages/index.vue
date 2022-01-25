@@ -1,17 +1,43 @@
 <template>
   <v-container class="topPage" fluid pa-0>
     <v-row no-gutters class="topView" justify="center">
-      <v-img height="70vh" class="topImg" :src="image_src">
-        <v-row id="topInnner" no-gutters justify="center" align="center">
-          <v-col cols="10">
-            <p id="topLetter">
-              みんなの 「<strong id="strLetter">それな</strong
-              >」をシェアしよう！
-            </p>
-          </v-col>
-        </v-row>
-      </v-img>
+      <v-carousel height="75vh" v-model="model">
+        <v-carousel-item v-for="(item, i) in carouselsArr" :key="i">
+          <v-img height="65vh" class="topImg" :src="item.image_src">
+            <div class="topInnner_section">
+              <v-row
+                v-show="model === 0"
+                id="topInnner"
+                no-gutters
+                justify="center"
+              >
+                <p id="topLetter">SORENA</p>
+              </v-row>
+              <v-row
+                v-show="model === 0"
+                id="topInnner"
+                no-gutters
+                justify="center"
+              >
+                <p id="topLetter_sub">
+                  みんなの 「<strong id="strLetter">それな</strong
+                  >」をシェアしよう！
+                </p>
+              </v-row>
+            </div>
+          </v-img>
+          <v-row
+            v-show="model > 0"
+            id="tutorialLetter"
+            no-gutters
+            justify="center"
+          >
+            <p v-html="item.letter"></p>
+          </v-row>
+        </v-carousel-item>
+      </v-carousel>
     </v-row>
+
     <v-row class="mainBtn1" no-gutters justify="center" align="center">
       <v-btn
         height="10vh"
@@ -43,28 +69,39 @@
 export default {
   data() {
     return {
-      image_src: require('@/assets/img/top_img/topPageCarousels/sorena_top.jpg'),
+      model: 0,
+      carouselCount: 0,
       carouselsArr: [
         {
           id: 0,
-          image_src: '@/assets/img/top_img/topPageCarousels/sorena_top.jpg',
+          image_src: require('@/assets/img/top_img/topPageCarousels/sorena_top.gif'),
+          letter: '',
         },
         {
           id: 1,
-          image_src: '@/assets/img/top_img/topPageCarousels/fastApp.png',
+          image_src: require('@/assets/img/top_img/topPageCarousels/fastApp.png'),
+          letter: '問題のカードが出てきます',
         },
         {
           id: 2,
-          image_src:
-            '@/assets/img/top_img/topPageCarousels/swipExplanation.png',
+          image_src: require('@/assets/img/top_img/topPageCarousels/swipExplanation.png'),
+          letter:
+            '右へスワイプすれば「あるよねー」<br>左へスワイプすれば「ないよねー」<br>と判断します',
         },
         {
           id: 3,
-          image_src: '@/assets/img/top_img/topPageCarousels/result.jpg',
+          image_src: require('@/assets/img/top_img/topPageCarousels/result.jpg'),
+          letter: '１０問回答したら結果が出てきます',
         },
       ],
     }
   },
+  // computed: {
+  //   transitionComp() {
+  //     this.transitionAction()
+  //     return this.pageCount
+  //   },
+  // },
 }
 </script>
 <style lang="scss">
@@ -84,23 +121,34 @@ export default {
 .topImg {
   height: 100%;
 }
-#topInnner {
-  height: 100%;
+.topInnner_section {
+  margin-top: 30vh;
+}
+
+#topLetter {
+  font-family: 'Amiri';
+  width: 50vw;
+  font-size: 36px;
+  color: white;
+  background-color: rgba($color: #302c2c, $alpha: 0.7);
+  text-align: center;
+}
+#topLetter_sub {
+  font-size: 16px;
+  color: white;
+  background-color: rgba($color: #302c2c, $alpha: 0.7);
+  text-align: center;
 }
 #strLetter {
-  font-size: 16px;
+  font-size: 20px;
 }
-#topLetter {
-  font-size: 14px;
-  color: white;
-  background-color: black;
-  text-align: center;
+#tutorialLetter {
+  margin-top: 2vh;
+  color: black;
+  font-size: 3vw;
 }
 .mainBtn1 {
   height: 15vh;
-}
-.mainBtn2 {
-  height: 10vh;
 }
 
 @media screen and (min-width: 1024px) {
@@ -113,9 +161,9 @@ export default {
   #topLetter {
     font-size: 50px;
     color: white;
-    background-color: black;
     text-align: center;
   }
+
   #strLetter {
     font-size: 60px;
   }
