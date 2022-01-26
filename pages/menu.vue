@@ -54,8 +54,8 @@
             近いうちに実装するので<br />
             他のあるあるを遊んでみてね！
           </p>
-        </v-card-text></v-card
-      >
+        </v-card-text>
+      </v-card>
     </v-dialog>
   </v-container>
 </template>
