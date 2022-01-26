@@ -1,5 +1,5 @@
 <template>
-  <v-container class="topPage" fluid pa-0>
+  <v-container class="topPage ma-0" fluid pa-0>
     <v-row no-gutters class="topView" justify="center">
       <v-carousel height="75vh" v-model="model">
         <v-carousel-item v-for="(item, i) in carouselsArr" :key="i">

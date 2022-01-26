@@ -1,6 +1,6 @@
 <template>
   <v-container class="biomenu" fluid pa-0>
-    <v-row class="biomenuTop" justify="center" align="center">
+    <v-row class="biomenuTop ma-0" justify="center" align="center">
       <p>作者についてなど</p>
     </v-row>
     <v-row

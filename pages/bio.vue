@@ -1,16 +1,16 @@
 <template>
   <v-container class="menuPage" fluid pa-0>
-    <v-row class="bioTop" justify="center" align="center">
+    <v-row class="bioTop ma-0" justify="center" align="center">
       <p>作者プロフィール</p>
     </v-row>
-    <v-row justify="center" align="center">
+    <v-row class="ma-0" justify="center" align="center">
       <img height="200" width="200" class="avatarImg" :src="avatarImgSrc" />
     </v-row>
-    <v-row class="menuTop" justify="center" align="center">
+    <v-row class="menuTop ma-0" justify="center" align="center">
       <p>りょう</p>
     </v-row>
-    <v-row class="menuTop" justify="center" align="center">
-      <p>広島生まれ 広島育ち 東京住み</p>
+    <v-row class="menuTop ma-0" justify="center" align="center">
+      <p>広島生まれ 東京住み</p>
     </v-row>
     <p>
       2020年からITの世界に入る。 VBA、バッチファイル等の業務効率化を
@@ -28,7 +28,7 @@
       =>Node.js(Expressを使ったAPIサーバー)<br />
       ・ITIL4の概念を使用したサービス運用設計など
     </p>
-    <v-row class="bioIcons" justify="center" align="center">
+    <v-row class="bioIcons ma-0" justify="center" align="center">
       <v-col v-for="(item, i) in iconsArr" :key="i" cols="3">
         <img class="icons" height="50" width="50" :src="item.image_src" />
       </v-col>
@@ -64,7 +64,6 @@ export default {
 </script>
 <style lang="scss">
 .bioTop {
-  padding-top: 5vh;
   font-size: 30px;
   color: black;
 }
