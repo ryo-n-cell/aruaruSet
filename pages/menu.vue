@@ -1,6 +1,6 @@
 <template>
   <v-container class="menuPage" fluid pa-0>
-    <v-row class="menuTop" justify="center" align="center">
+    <v-row class="menuTop ma-0" justify="center" align="center">
       <p>やってみよう！</p>
     </v-row>
     <v-row
@@ -102,7 +102,6 @@ export default {
 </script>
 <style lang="scss">
 .menuTop {
-  padding-top: 5vh;
   font-size: 30px;
   color: black;
 }

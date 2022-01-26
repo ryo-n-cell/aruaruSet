@@ -16,7 +16,11 @@ export default {
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
-
+  loadingIndicator: {
+    name: 'circle',
+    color: '#3B8070',
+    background: 'white'
+  },
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
     { src: '~assets/css/styles.scss' }
