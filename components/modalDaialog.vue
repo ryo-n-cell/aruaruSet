@@ -16,10 +16,16 @@
     >
       <h3>{{ modalItem.name }}</h3>
     </v-row>
+    <privacyPolicyDaialog ref="dlg"></privacyPolicyDaialog>
   </v-overlay>
 </template>
+
 <script>
+import privacyPolicyDaialog from '@/components/privacyPolicy'
 export default {
+  components: {
+    privacyPolicyDaialog,
+  },
   data() {
     return {
       isDisplay: false,
@@ -51,6 +57,9 @@ export default {
     transitionAction(i) {
       this.$router.push(this.pageNameArr[i].pagePath)
       this.isDisplay = false
+    },
+    openPPDisplay() {
+      this.$refs.dlg.isPPDisplay = true
     },
   },
 }

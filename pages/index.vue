@@ -157,7 +157,6 @@ export default {
     color: white;
     text-align: center;
   }
-
   #strLetter {
     font-size: 60px;
   }
