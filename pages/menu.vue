@@ -1,8 +1,6 @@
 <template>
   <v-container class="menuPage" fluid pa-0>
-    <v-row class="menuTop ma-0" justify="center" align="center">
-      <p>やってみよう！</p>
-    </v-row>
+    <headerBer :header-title="title"></headerBer>
     <v-row
       v-for="(item, i) in attributeArr"
       :key="i"
@@ -61,9 +59,14 @@
 </template>
 
 <script>
+import headerBer from '@/components/headerBer'
 export default {
+  components: {
+    headerBer,
+  },
   data() {
     return {
+      title: 'メニュー',
       notInstalledDialog: false,
       attributeArr: [
         {

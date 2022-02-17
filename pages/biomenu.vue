@@ -1,8 +1,6 @@
 <template>
   <v-container class="biomenu" fluid pa-0>
-    <v-row class="biomenuTop ma-0" justify="center" align="center">
-      <p>作者についてなど</p>
-    </v-row>
+    <headerBer :header-title="title"></headerBer>
     <v-row
       v-for="(item, i) in attributeArr"
       :key="i"
@@ -29,6 +27,7 @@
 export default {
   data() {
     return {
+      title: '作者についてなど',
       attributeArr: [
         {
           id: 0,

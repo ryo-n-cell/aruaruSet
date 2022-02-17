@@ -1,16 +1,14 @@
 <template>
   <v-container class="menuPage" fluid pa-0>
-    <v-row class="bioTop ma-0" justify="center" align="center">
-      <p>作者プロフィール</p>
-    </v-row>
+    <headerBer :header-title="title"></headerBer>
     <v-row class="ma-0" justify="center" align="center">
       <img height="200" width="200" class="avatarImg" :src="avatarImgSrc" />
     </v-row>
     <v-row class="menuTop ma-0" justify="center" align="center">
-      <p>りょう</p>
+      <h4>りょう</h4>
     </v-row>
     <v-row class="menuTop ma-0" justify="center" align="center">
-      <p>広島生まれ 東京住み</p>
+      <h5>広島生まれ 東京住み</h5>
     </v-row>
     <p>
       2020年からITの世界に入る。 VBA、バッチファイル等の業務効率化を
@@ -40,6 +38,7 @@
 export default {
   data() {
     return {
+      title: '作者プロフィール',
       avatarImgSrc: require('@/assets/img/top_img/bio/bio.png'),
       iconsArr: [
         {
@@ -64,7 +63,7 @@ export default {
 </script>
 <style lang="scss">
 .bioTop {
-  font-size: 30px;
+  font-size: 20px;
   color: black;
 }
 .avatarImg {
