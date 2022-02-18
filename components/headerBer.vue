@@ -1,14 +1,21 @@
 <template>
-  <v-app-bar color="deep-purple accent-4">
-    <v-icon color="white" @click="returnEvent">mdi-arrow-left</v-icon>
-    <v-toolbar-title class="titleName">{{ headerTitle }}</v-toolbar-title>
-    <v-spacer></v-spacer>
-    <v-icon color="white">mdi-dots-vertical</v-icon>
-  </v-app-bar>
+  <div>
+    <v-app-bar color="deep-purple accent-4">
+      <v-icon color="white" @click="returnEvent">mdi-arrow-left</v-icon>
+      <v-toolbar-title class="titleName">{{ headerTitle }}</v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-icon color="white" @click="modalToggle">mdi-dots-vertical</v-icon>
+    </v-app-bar>
+    <modalDaialog ref="dlgToggle"></modalDaialog>
+  </div>
 </template>
 
 <script>
+import modalDaialog from '@/components/modalDaialog'
 export default {
+  components: {
+    modalDaialog,
+  },
   props: {
     headerTitle: {
       type: String,
@@ -17,9 +24,7 @@ export default {
     },
   },
   data() {
-    return {
-      title: '',
-    }
+    return {}
   },
   methods: {
     // ルート遷移機能が密結合になっているので後々$routeをpropsで渡すようにしたい。
@@ -31,8 +36,14 @@ export default {
         this.$router.push('/menu')
       } else if (this.headerTitle === '作者プロフィール') {
         this.$router.push('/biomenu')
+      } else if (this.headerTitle === 'プライバシーポリシー') {
+        this.$router.push('/biomenu')
       }
-      console.log('作者プロフィール')
+    },
+
+    modalToggle() {
+      console.log('togle')
+      this.$refs.dlgToggle.isDisplay = true
     },
   },
 }
