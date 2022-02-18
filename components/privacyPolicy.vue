@@ -1,6 +1,6 @@
 <template>
   <v-overlay
-    v-model="isDisplay"
+    v-model="isPPDisplay"
     overlay-opacity="0.5"
     fullscreen
     dark

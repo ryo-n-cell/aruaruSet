@@ -5,13 +5,8 @@
     </v-main>
   </v-app>
 </template>
-
 <script>
-// import modalDialog from '@/components/modalDaialog'
 export default {
-  // components: {
-  //   modalDialog,
-  // },
   data() {
     return {
       pageCount: 1,

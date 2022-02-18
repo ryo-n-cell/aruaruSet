@@ -1,13 +1,19 @@
 <template>
   <v-overlay
     v-model="isDisplay"
-    overlay-opacity="0.5"
+    opacity="0.8"
     fullscreen
     dark
     transition="dialog-bottom-transition"
   >
+    <v-row class="mr-5">
+      <v-spacer></v-spacer>
+      <v-icon large color="white" @click="isDisplay = false"
+        >mdi-window-close</v-icon
+      >
+    </v-row>
     <v-row
-      class="ma-0"
+      class="ma-15"
       justify="center"
       align="center"
       :key="i"
@@ -16,16 +22,11 @@
     >
       <h3>{{ modalItem.name }}</h3>
     </v-row>
-    <privacyPolicyDaialog ref="dlg"></privacyPolicyDaialog>
   </v-overlay>
 </template>
 
 <script>
-import privacyPolicyDaialog from '@/components/privacyPolicy'
 export default {
-  components: {
-    privacyPolicyDaialog,
-  },
   data() {
     return {
       isDisplay: false,
@@ -43,7 +44,7 @@ export default {
         {
           id: 2,
           name: 'プライバシーポリシー',
-          pagePath: '/menu',
+          pagePath: '/privacyPolicy',
         },
         {
           id: 3,

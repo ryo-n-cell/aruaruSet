@@ -41,6 +41,11 @@ export default {
         },
         {
           id: 2,
+          attribute: 'プライバシーポリシー',
+          urlRoot: '/privacyPolicy',
+        },
+        {
+          id: 3,
           attribute: '作者プロフィール',
           urlRoot: '/bio',
         },
