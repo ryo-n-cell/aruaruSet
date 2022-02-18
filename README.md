@@ -1,4 +1,4 @@
-# Sorena
+# Sorena(FrontEnd)
 
 <p>
   <img alt="Sorena" src="https://github.com/ryo-n-cell/aruaruSet/blob/develop/assets/img/top_img/topPageCarousels/sorena_top.gif" width="50%" />
@@ -22,7 +22,7 @@
   <img alt="node.js" src="https://img.shields.io/badge/-node.js-339933?style=flat-square&logo=Node.js&logoColor=white" />
   <img alt="express" src="https://img.shields.io/badge/-Express-00b068?style=flat-square&logo=express&logoColor=#FF7200" />
   <img alt="MySQL" src="https://img.shields.io/badge/-MySQL-4479A1?style=flat-square&logo=MySQL&logoColor=white" />
-  <img alt="TypeORM" src="https://img.shields.io/badge/-TypeORM-4479A1?style=flat-square />
+  <img alt="TypeORM" src="https://img.shields.io/badge/-TypeORM-4479A1?style=flat-square" />
   <img alt="Heroku" src="https://img.shields.io/badge/-Heroku-430098?style=flat-square&logo=Heroku&logoColor=white" />
 </p>
 
