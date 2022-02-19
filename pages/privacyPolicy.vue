@@ -1,5 +1,5 @@
 <template>
-  <v-container class="menuPage" fluid pa-0>
+  <v-container class="sectionPages" fluid pa-0>
     <headerBer :header-title="title" :route-path="routePath"></headerBer>
     <v-row no-gutters align="center">
       <p>

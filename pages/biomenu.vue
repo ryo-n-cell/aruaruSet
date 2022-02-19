@@ -1,5 +1,5 @@
 <template>
-  <v-container class="biomenu" fluid pa-0>
+  <v-container class="sectionPages biomenu" fluid pa-0>
     <headerBer :header-title="title" :route-path="routePath"></headerBer>
     <v-row
       v-for="(item, i) in attributeArr"
