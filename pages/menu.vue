@@ -1,6 +1,6 @@
 <template>
   <v-container id="menuPage" fluid pa-0>
-    <headerBer :header-title="title"></headerBer>
+    <headerBer :header-title="title" :route-path="routePath"></headerBer>
     <v-row
       v-for="(item, i) in attributeArr"
       :key="i"
@@ -57,7 +57,6 @@
     </v-dialog>
   </v-container>
 </template>
-
 <script>
 import headerBer from '@/components/headerBer'
 export default {
@@ -67,6 +66,7 @@ export default {
   data() {
     return {
       title: 'メニュー',
+      routePath: '/',
       notInstalledDialog: false,
       attributeArr: [
         {
