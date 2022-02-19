@@ -16,15 +16,9 @@ export default {
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
-  loadingIndicator: {
-    name: 'circle',
-    color: '#3B8070',
-    background: 'white'
-  },
+  loading: './components/loading.vue',
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [
-    { src: '~assets/scss/styles.scss' }
-  ],
+  css: [{ src: '~assets/scss/styles.scss' }],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [],
@@ -41,11 +35,7 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [
-    'nuxt-webfontloader',
-    '@nuxtjs/axios',
-    '@nuxtjs/google-analytics',
-  ],
+  modules: ['nuxt-webfontloader', '@nuxtjs/axios', '@nuxtjs/google-analytics'],
   proxy: {
     '/': {
       target: 'https://aruaruswipeapp.herokuapp.com',
