@@ -12,4 +12,8 @@ export default {
   },
 }
 </script>
-<style lang="scss"></style>
+<style lang="scss">
+.v-application--wrap {
+  min-height: 100% !important;
+}
+</style>

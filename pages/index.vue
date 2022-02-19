@@ -50,18 +50,6 @@
         >やってみる？</v-btn
       >
     </v-row>
-    <v-row class="mainBtn2" no-gutters justify="center" align="center">
-      <v-btn
-        height="5vh"
-        min-width="90vw"
-        x-large
-        color="#908E8E"
-        nuxt
-        to="/biomenu"
-        dark
-        >作者について</v-btn
-      >
-    </v-row>
   </v-container>
 </template>
 
@@ -146,7 +134,7 @@ export default {
   font-size: 3vw;
 }
 .mainBtn1 {
-  height: 15vh;
+  height: 15%;
 }
 
 @media screen and (min-width: 1024px) {
