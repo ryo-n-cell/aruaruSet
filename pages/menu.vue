@@ -1,5 +1,5 @@
 <template>
-  <v-container class="menuPage" fluid pa-0>
+  <v-container id="menuPage" fluid pa-0>
     <headerBer :header-title="title"></headerBer>
     <v-row
       v-for="(item, i) in attributeArr"
@@ -100,6 +100,10 @@ export default {
         this.$router.push(this.attributeArr[itemId].urlRoot)
       }
     },
+  },
+  mounted() {
+    const vh = window.innerHeight
+    document.getElementById('menuPage').style.height = vh + 'px'
   },
 }
 </script>

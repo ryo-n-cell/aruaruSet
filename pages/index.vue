@@ -1,7 +1,7 @@
 <template>
-  <v-container class="topPage ma-0" fluid pa-0>
+  <v-container id="topPage" class="ma-0" fluid pa-0>
     <v-row no-gutters class="topView" justify="center">
-      <v-carousel height="75vh" v-model="model">
+      <v-carousel height="75vh" delimiter-icon="mdi-minus" v-model="model">
         <v-carousel-item v-for="(item, i) in carouselsArr" :key="i">
           <v-img height="65vh" class="topImg" :src="item.image_src">
             <div class="topInnner_section">
@@ -96,10 +96,14 @@ export default {
       ],
     }
   },
+  mounted() {
+    const vh = window.innerHeight
+    document.getElementById('topPage').style.height = vh + 'px'
+  },
 }
 </script>
 <style lang="scss">
-.topPage {
+#topPage {
   font-family: 'Roboto-Black';
 }
 #titleBox {
