@@ -1,5 +1,5 @@
 <template>
-  <div id="mainSection" sectionPages>
+  <div id="sectionPages">
     <vue-swing :config="config" @throwout="onThrowout">
       <div
         v-for="card in ip"
@@ -27,18 +27,18 @@
         <span>{{ card.questions }}</span>
       </div>
     </vue-swing>
-    <v-footer id="mainFooter" absolute>
+    <!-- <v-footer id="mainFooter" absolute>
       <v-row no-gutters justify="center" align="center">
         <p>{{ progressCount }}/10</p>
       </v-row>
-    </v-footer>
+    </v-footer> -->
   </div>
 </template>
 
 <script>
 import VueSwing from 'vue-swing'
 import { mapMutations } from 'vuex'
-
+// import headerBer from '@/components/headerBer'
 export default {
   components: { VueSwing },
   async asyncData({ $axios }) {
@@ -49,6 +49,8 @@ export default {
   data() {
     return {
       data: {
+        title: 'こんにちは',
+        routePath: '/menu',
         yepImgSrc: '@/assets/img/mainPage/sorena.svg',
         nopeImgSrc: '@/assets/img/mainPage/naiwa.svg',
       },

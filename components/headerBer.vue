@@ -17,6 +17,11 @@ export default {
     modalDaialog,
   },
   props: {
+    // headerTitle: {
+    //   type: String,
+    //   default: '',
+    //   required: false,
+    // },
     headerTitle: {
       type: String,
       default: '',
