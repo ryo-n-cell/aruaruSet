@@ -1,5 +1,5 @@
 <template>
-  <div id="mainSection">
+  <div id="mainSection" sectionPages>
     <vue-swing :config="config" @throwout="onThrowout">
       <div
         v-for="card in ip"

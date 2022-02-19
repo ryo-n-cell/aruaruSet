@@ -1,5 +1,5 @@
 <template>
-  <v-container class="menuPage" fluid pa-0>
+  <v-container class="sectionPages" fluid pa-0>
     <headerBer :header-title="title" :route-path="routePath"></headerBer>
     <v-row class="ma-0" justify="center" align="center">
       <img height="200" width="200" class="avatarImg" :src="avatarImgSrc" />
