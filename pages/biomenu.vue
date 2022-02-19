@@ -1,6 +1,6 @@
 <template>
   <v-container class="biomenu" fluid pa-0>
-    <headerBer :header-title="title"></headerBer>
+    <headerBer :header-title="title" :route-path="routePath"></headerBer>
     <v-row
       v-for="(item, i) in attributeArr"
       :key="i"
@@ -28,6 +28,7 @@ export default {
   data() {
     return {
       title: '作者についてなど',
+      routePath: '/menu',
       attributeArr: [
         {
           id: 0,
@@ -54,8 +55,7 @@ export default {
   },
   methods: {
     actionRouter(itemId) {
-      console.log(itemId)
-      if (itemId === 2) {
+      if (itemId === 2 || itemId === 3) {
         this.$router.push(this.attributeArr[itemId].urlRoot)
       } else {
         window.location.href = this.attributeArr[itemId].urlRoot

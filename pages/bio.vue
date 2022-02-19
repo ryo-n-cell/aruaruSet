@@ -1,6 +1,6 @@
 <template>
   <v-container class="menuPage" fluid pa-0>
-    <headerBer :header-title="title"></headerBer>
+    <headerBer :header-title="title" :route-path="routePath"></headerBer>
     <v-row class="ma-0" justify="center" align="center">
       <img height="200" width="200" class="avatarImg" :src="avatarImgSrc" />
     </v-row>
@@ -39,6 +39,7 @@ export default {
   data() {
     return {
       title: '作者プロフィール',
+      routePath: 'biomenu',
       avatarImgSrc: require('@/assets/img/top_img/bio/bio.png'),
       iconsArr: [
         {

@@ -17,6 +17,8 @@
     "es6-promise": "^4.2.8",
     "nuxt": "^2.15.8",
     "nuxt-webfontloader": "^1.1.0",
+    "sass": "^1.49.8",
+    "sass-loader": "10",
     "swing": "^3.1.4",
     "vue": "^2.6.14",
     "vue-server-renderer": "^2.6.14",

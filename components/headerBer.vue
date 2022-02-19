@@ -22,6 +22,11 @@ export default {
       default: '',
       required: true,
     },
+    routePath: {
+      type: String,
+      default: '',
+      required: true,
+    },
   },
   data() {
     return {}
@@ -29,20 +34,12 @@ export default {
   methods: {
     // ルート遷移機能が密結合になっているので後々$routeをpropsで渡すようにしたい。
     // https://qiita.com/morrr/items/873ea25a806167c8d426#route-%E3%82%92props%E3%81%A7%E6%B8%A1%E3%81%99
+    // 2/19 解消
     returnEvent() {
-      if (this.headerTitle === 'メニュー') {
-        this.$router.push('/')
-      } else if (this.headerTitle === '作者についてなど') {
-        this.$router.push('/menu')
-      } else if (this.headerTitle === '作者プロフィール') {
-        this.$router.push('/biomenu')
-      } else if (this.headerTitle === 'プライバシーポリシー') {
-        this.$router.push('/biomenu')
-      }
+      this.$router.push(this.routePath)
     },
 
     modalToggle() {
-      console.log('togle')
       this.$refs.dlgToggle.isDisplay = true
     },
   },

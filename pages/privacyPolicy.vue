@@ -1,6 +1,6 @@
 <template>
   <v-container class="menuPage" fluid pa-0>
-    <headerBer :header-title="title"></headerBer>
+    <headerBer :header-title="title" :route-path="routePath"></headerBer>
     <v-row no-gutters align="center">
       <p>
         当サイトでは <br />
@@ -46,6 +46,7 @@ export default {
   data() {
     return {
       title: 'プライバシーポリシー',
+      routePath: '/biomenu',
       notInstalledDialog: false,
     }
   },

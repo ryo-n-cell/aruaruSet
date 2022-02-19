@@ -22,7 +22,9 @@ export default {
     background: 'white'
   },
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [{ src: '~assets/css/styles.scss' }],
+  css: [
+    { src: '~assets/scss/styles.scss' }
+  ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [],

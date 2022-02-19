@@ -1,4 +1,4 @@
-# Sorena
+# Sorena(FrontEnd)
 
 <p>
   <img alt="Sorena" src="https://github.com/ryo-n-cell/aruaruSet/blob/develop/assets/img/top_img/topPageCarousels/sorena_top.gif" width="50%" />
@@ -19,9 +19,10 @@
 ## Back
 
 <p>
- <img alt="node.js" src="https://img.shields.io/badge/-node.js-339933?style=flat-square&logo=Node.js&logoColor=white" />
+  <img alt="node.js" src="https://img.shields.io/badge/-node.js-339933?style=flat-square&logo=Node.js&logoColor=white" />
   <img alt="express" src="https://img.shields.io/badge/-Express-00b068?style=flat-square&logo=express&logoColor=#FF7200" />
   <img alt="MySQL" src="https://img.shields.io/badge/-MySQL-4479A1?style=flat-square&logo=MySQL&logoColor=white" />
+  <img alt="TypeORM" src="https://img.shields.io/badge/-TypeORM-4479A1?style=flat-square" />
   <img alt="Heroku" src="https://img.shields.io/badge/-Heroku-430098?style=flat-square&logo=Heroku&logoColor=white" />
 </p>
 
@@ -34,7 +35,7 @@
 ## Repositories
 
 [Front](https://github.com/ryo-n-cell/aruaruSet)  
-[Back](https://github.com/ryo-n-cell/aruaruappAPI)  
+[Back](https://github.com/ryo-n-cell/SorenaAPI)  
 [Wireframe in Figma](https://www.figma.com/file/6fPUE9GhPdo7PRx26xH4kb/Sorena_farstView?node-id=0%3A1)
 
 ## Roadmap
