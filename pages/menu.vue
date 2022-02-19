@@ -101,15 +101,10 @@ export default {
       }
     },
   },
-  mounted() {
-    const vh = window.innerHeight
-    document.getElementById('menuPage').style.height = vh + 'px'
-  },
 }
 </script>
 <style lang="scss">
-.menuTop {
-  font-size: 30px;
-  color: black;
+#menuPage {
+  position: fixed;
 }
 </style>

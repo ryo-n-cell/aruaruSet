@@ -10,9 +10,6 @@ export default {
   data() {
     return {}
   },
-  mounted() {
-    const vh = window.innerHeight
-    document.getElementById('allPage').style.height = vh + 'px'
-  },
 }
 </script>
+<style lang="scss"></style>
