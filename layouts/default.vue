@@ -1,17 +1,20 @@
 <template>
-  <v-app>
+  <v-app id="allPage">
     <v-main>
-      <nuxt />
+      <Nuxt />
     </v-main>
   </v-app>
 </template>
-
 <script>
 export default {
   data() {
-    return {
-      title: 'SORENA',
-    }
+    return {}
   },
 }
 </script>
+<style lang="scss">
+.v-application--wrap {
+  min-height: 100% !important;
+  overscroll-behavior-y: none;
+}
+</style>

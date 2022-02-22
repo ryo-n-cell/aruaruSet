@@ -1,5 +1,5 @@
 <template>
-  <div id="mainSection">
+  <v-container fluid pa-0>
     <vue-swing :config="config" @throwout="onThrowout">
       <div
         v-for="card in ip"
@@ -27,20 +27,21 @@
         <span>{{ card.questions }}</span>
       </div>
     </vue-swing>
-    <v-footer id="mainFooter" absolute>
-      <v-row no-gutters justify="center" align="center">
-        <p>{{ progressCount }}/10</p>
-      </v-row>
-    </v-footer>
-  </div>
+  </v-container>
 </template>
 
 <script>
-import VueSwing from 'vue-swing'
 import { mapMutations } from 'vuex'
-
+import VueSwing from 'vue-swing'
 export default {
   components: { VueSwing },
+  beforeRouteLeave(to, from, next) {
+    if (to.name !== 'resultView') {
+      next()
+      this.$store.commit('choicesResult/removeResult')
+    }
+    next()
+  },
   async asyncData({ $axios }) {
     const ip = await $axios.$get('https://aruaruswipeapp.herokuapp.com/getData')
     return { ip }
@@ -49,6 +50,8 @@ export default {
   data() {
     return {
       data: {
+        title: 'こんにちは',
+        routePath: '/menu',
         yepImgSrc: '@/assets/img/mainPage/sorena.svg',
         nopeImgSrc: '@/assets/img/mainPage/naiwa.svg',
       },

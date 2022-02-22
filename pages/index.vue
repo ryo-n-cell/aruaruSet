@@ -1,136 +1,55 @@
 <template>
-  <v-container class="topPage" fluid pa-0>
-    <v-row no-gutters class="topView" justify="center" align="center">
-      <div id="titleBox">SORENA<br />(βバージョン)</div>
-      <v-col pt-0>
-        <v-img class="topImg" :src="image_src1">
-          <v-row id="topInnner" no-gutters justify="center" align="center">
-            <v-col cols="10">
-              <p id="topLetter">
-                みんなの 「<strong id="strLetter">それな</strong
-                >」をシェアしよう！
-              </p>
-            </v-col>
+  <v-container id="topPage" class="sectionPages ma-0" fluid pa-0>
+    <v-row no-gutters class="topView" justify="center">
+      <v-carousel height="75vh" delimiter-icon="mdi-minus" v-model="model">
+        <v-carousel-item v-for="(item, i) in carouselsArr" :key="i">
+          <v-img height="65vh" class="topImg" :src="item.image_src">
+            <div class="topInnner_section">
+              <v-row
+                v-show="model === 0"
+                id="topInnner"
+                no-gutters
+                justify="center"
+              >
+                <p id="topLetter">SORENA</p>
+              </v-row>
+              <v-row
+                v-show="model === 0"
+                id="topInnner"
+                no-gutters
+                justify="center"
+              >
+                <p id="topLetter_sub">
+                  みんなの 「<strong id="strLetter">それな</strong
+                  >」をシェアしよう！
+                </p>
+              </v-row>
+            </div>
+          </v-img>
+          <v-row
+            v-show="model > 0"
+            id="tutorialLetter"
+            no-gutters
+            justify="center"
+          >
+            <p v-html="item.letter"></p>
           </v-row>
-        </v-img>
-      </v-col>
+        </v-carousel-item>
+      </v-carousel>
     </v-row>
-    <v-row no-gutters justify="center" align="center">
-      <v-btn x-large color="#1FD267" nuxt to="/mainPage" dark
-        >やってみる！</v-btn
+
+    <v-row class="mainBtn1" no-gutters justify="center" align="center">
+      <v-btn
+        height="10vh"
+        min-width="90vw"
+        x-large
+        color="#9D7575"
+        nuxt
+        to="/menu"
+        dark
+        >やってみる？</v-btn
       >
     </v-row>
-    <section class="sectionSeparation">
-      <v-row no-gutters justify="center" align="center">
-        <h1>なんのアプリ？</h1>
-      </v-row>
-      <v-row no-gutters justify="center">
-        <v-col cols="10">
-          <v-img id="whyAppImg" :src="image_src2">
-            <v-row no-gutters justify="end" align="end" style="height: 100%">
-              <v-col class="descriptionLetter" cols="6">
-                <p>
-                  みんなのあるあるネタをスワイプ<br />
-                  して答えていくアプリです。<br />
-                  世界中のみんなの「あるよねー」<br />
-                  が見れます。
-                </p>
-              </v-col>
-            </v-row>
-          </v-img>
-        </v-col>
-      </v-row>
-    </section>
-    <section style="margin-top: 5vh">
-      <v-row no-gutters justify="center" align="center">
-        <h1>やり方</h1>
-      </v-row>
-      <v-row no-gutters justify="center">
-        <v-col cols="10">
-          <v-carousel v-model="slideNo" hide-delimiters>
-            <v-carousel-item v-for="slide in slideArr" :key="slide.id">
-              <v-row justify="center">
-                <v-col cols="12" xs="12" md="6">
-                  <v-img class="sizingPc" :src="slide.slide_src"> </v-img>
-                </v-col>
-              </v-row>
-            </v-carousel-item>
-          </v-carousel>
-          <v-carousel
-            v-model="slideNo"
-            class="slideLetter"
-            :show-arrows="false"
-            hide-delimiters
-            style="height: 8vh"
-          >
-            <v-carousel-item v-for="slide in slideArr" :key="slide.id">
-              <v-row justify="center">
-                <p class="slideLetter">{{ slide.letter }}</p>
-              </v-row>
-            </v-carousel-item>
-          </v-carousel>
-        </v-col>
-      </v-row>
-    </section>
-    <section style="margin-top: 5vh">
-      <v-row no-gutters justify="center" style="margin-bottom: 2vh">
-        <h1>ロードマップ</h1>
-      </v-row>
-      <v-row no-gutters justify="center">
-        <p>Torelloでロードマップを公開しています。</p>
-      </v-row>
-      <v-row no-gutters justify="center">
-        <p>以下のボタンからTorelloのワークスペースへ遷移します</p>
-      </v-row>
-      <v-row no-gutters justify="center">
-        <v-btn
-          x-large
-          color="#1FD267"
-          href="https://trello.com/b/x62CNjPh/sorena"
-          dark
-          >Torello</v-btn
-        >
-      </v-row>
-    </section>
-    <section style="margin: 5vh">
-      <v-row no-gutters justify="center" align="center">
-        <v-btn x-large color="#1FD267" nuxt to="/mainPage" dark
-          >やってみる！</v-btn
-        >
-      </v-row>
-    </section>
-    <section style="margin-top: 5vh">
-      <v-row no-gutters justify="center" style="margin-bottom: 2vh">
-        <h1>プライバシーポリシー</h1>
-      </v-row>
-      <v-row no-gutters justify="center" align="center">
-        <p>
-          当サイトでは、アクセス解析、ページトラッキング、イベントトラッキング<br />
-          スクリーントラッキング、ユーザタイミングトラッキングを目的に<br />
-          Googleによるアクセス解析ツール「Googleアナリティクス」を使用しています。<br />
-        </p>
-      </v-row>
-      <v-row no-gutters justify="center" align="center">
-        <p>
-          このGoogleアナリティクスはデータの収集のためにCookieを使用しています。<br />
-          このデータは匿名で収集されており、個人を特定するものではありません。<br />
-          この機能はCookieを無効にすることで収集を拒否することが出来ますので、<br />
-          お使いのブラウザの設定をご確認ください。この規約に関しての詳細は<br />
-          <a
-            href="https://marketingplatform.google.com/about/analytics/terms/jp/"
-            >Googleアナリティクスサービス利用規約のページ</a
-          >
-          や
-          <a href="https://policies.google.com/technologies/ads?hl=ja"
-            >Googleポリシーと規約ページ</a
-          ><br />
-          をご覧ください。
-        </p>
-      </v-row>
-    </section>
-    <v-footer>
-      <span>&copy; Ryota Nakamura {{ new Date().getFullYear() }}</span>
-    </v-footer>
   </v-container>
 </template>
 
@@ -138,37 +57,41 @@
 export default {
   data() {
     return {
-      image_src1: require('@/assets/img/top_img/sorena_top.jpg'),
-      image_src2: require('@/assets/img/top_img/what_app.jpg'),
-      slideNo: 0,
-      slideArr: [
+      model: 0,
+      carouselCount: 0,
+      carouselsArr: [
         {
           id: 0,
-          slide_src: require('@/assets/img/top_img/howTo/fastApp.png'),
-          letter: '最初に質問のカードが出ます',
+          image_src: require('@/assets/img/top_img/topPageCarousels/sorena_top.gif'),
+          letter: '',
         },
         {
           id: 1,
-          slide_src: require('@/assets/img/top_img/howTo/yepImg.png'),
-          letter: '「あるある」ならば右へスワイプ',
+          image_src: require('@/assets/img/top_img/topPageCarousels/fastApp.png'),
+          letter: '問題のカードが出てきます',
         },
         {
           id: 2,
-          slide_src: require('@/assets/img/top_img/howTo/nopImg.png'),
-          letter: '「ないない」ならば左へスワイプ。これを１０回繰り返します',
+          image_src: require('@/assets/img/top_img/topPageCarousels/swipExplanation.png'),
+          letter:
+            '右へスワイプすれば「あるよねー」<br>左へスワイプすれば「ないよねー」<br>と判断します',
         },
         {
           id: 3,
-          slide_src: require('@/assets/img/top_img/howTo/result.jpg'),
-          letter: '最後に結果と今までの「あるある」の割合が出てきます。',
+          image_src: require('@/assets/img/top_img/topPageCarousels/result.jpg'),
+          letter: '10問回答したら結果が出てきます',
         },
       ],
     }
   },
+  mounted() {
+    const vh = window.innerHeight
+    document.getElementById('topPage').style.height = vh + 'px'
+  },
 }
 </script>
 <style lang="scss">
-.topPage {
+#topPage {
   font-family: 'Roboto-Black';
 }
 #titleBox {
@@ -181,38 +104,39 @@ export default {
   background-color: rgb(121, 0, 113);
   text-align: center;
 }
-.topView {
-  height: 80vh;
-}
 .topImg {
-  height: 60vh;
-}
-#topInnner {
   height: 100%;
 }
-#strLetter {
-  font-size: 16px;
+.topInnner_section {
+  margin-top: 30vh;
 }
+
 #topLetter {
-  font-size: 14px;
+  font-family: 'Amiri';
+  width: 50vw;
+  font-size: 36px;
   color: white;
-  background-color: black;
+  background-color: rgba($color: #302c2c, $alpha: 0.7);
   text-align: center;
 }
-.sectionSeparation {
-  margin-top: 20vh;
+#topLetter_sub {
+  font-size: 16px;
+  color: white;
+  background-color: rgba($color: #302c2c, $alpha: 0.7);
+  text-align: center;
 }
-.descriptionLetter {
-  font-size: 10px;
-  font-weight: 700;
-  margin-bottom: 5%;
+#strLetter {
+  font-size: 20px;
 }
-.slideLetter {
-  font-size: 10px;
+#tutorialLetter {
   margin-top: 2vh;
-  z-index: 1;
   color: black;
+  font-size: 3vw;
 }
+.mainBtn1 {
+  height: 15%;
+}
+
 @media screen and (min-width: 1024px) {
   #titleBox {
     width: 10vw;
@@ -223,7 +147,6 @@ export default {
   #topLetter {
     font-size: 50px;
     color: white;
-    background-color: black;
     text-align: center;
   }
   #strLetter {
@@ -237,16 +160,8 @@ export default {
     widows: 50vh;
     text-align: center;
   }
-  .descriptionLetter {
-    font-size: 30px;
-    font-weight: 700;
-    margin-bottom: 5%;
-  }
   .sizingPc {
     height: 40%;
-  }
-  .slideLetter {
-    font-size: 20px;
   }
 }
 </style>
