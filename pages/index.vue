@@ -79,7 +79,7 @@ export default {
         {
           id: 3,
           image_src: require('@/assets/img/top_img/topPageCarousels/result.jpg'),
-          letter: '１０問回答したら結果が出てきます',
+          letter: '10問回答したら結果が出てきます',
         },
       ],
     }

@@ -17,11 +17,6 @@ export default {
     modalDaialog,
   },
   props: {
-    // headerTitle: {
-    //   type: String,
-    //   default: '',
-    //   required: false,
-    // },
     headerTitle: {
       type: String,
       default: '',
@@ -37,9 +32,6 @@ export default {
     return {}
   },
   methods: {
-    // ルート遷移機能が密結合になっているので後々$routeをpropsで渡すようにしたい。
-    // https://qiita.com/morrr/items/873ea25a806167c8d426#route-%E3%82%92props%E3%81%A7%E6%B8%A1%E3%81%99
-    // 2/19 解消
     returnEvent() {
       this.$router.push(this.routePath)
     },

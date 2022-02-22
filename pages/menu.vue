@@ -28,6 +28,7 @@
         x-large
         color="#BA9B9B"
         dark
+        @click="notInstalledDialog = true"
         >今までの結果を見る</v-btn
       >
     </v-row>
